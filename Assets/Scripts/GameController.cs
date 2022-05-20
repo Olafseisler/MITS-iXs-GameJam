@@ -13,12 +13,21 @@ public class GameController : MonoBehaviour
 
     }
     
-    void checkWordOrder()
+    Word[] getWords()
 	{
+        Word[] words = new Word[5];
+
         for (int i = 0; i < wordSlots.Length; i++)
-		{
+        {
             // TODO: Extract the word from word slots 
-		}
+        }
+
+        return words;
+    }
+
+    public void checkWordOrder(Word[] words)
+	{
+        
 	}
 
     void checkTriggers()

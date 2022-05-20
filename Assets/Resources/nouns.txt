@@ -1,0 +1,4 @@
+mother
+father
+human
+rabbit

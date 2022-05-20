@@ -3,28 +3,28 @@ using UnityEngine;
 public enum wordType {
     Verbs,
     Adjectives,
-    Nouns;
+    Nouns
 }
 
 public class Word {
-    String word;
+    string word;
     wordType type;
 
     public Word(string word, wordType type) {
-        word = word;
-        type = type;
+        this.word = word;
+        this.type = type;
     }
 
 
-    public void SetWord(String word) {
-        word = word;
+    public void SetWord(string word) {
+        this.word = word;
     }
 
-    public GetWord() {
+    public string GetWord() {
         return word;
     }
 
     public void SetWord(wordType type) {
-        type = type;
+        this.type = type;
     }
 }

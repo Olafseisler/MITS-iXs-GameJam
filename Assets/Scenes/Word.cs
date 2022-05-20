@@ -1,30 +1,17 @@
 using UnityEngine;
 
-public enum wordType {
+public enum WordType {
     Verbs,
     Adjectives,
-    Nouns;
+    Nouns
 }
 
 public class Word {
-    String word;
-    wordType type;
+    string WordText { get; set; }
+    WordType WordType { get; set; }
 
-    public Word(string word, wordType type) {
-        word = word;
-        type = type;
-    }
-
-
-    public void SetWord(String word) {
-        word = word;
-    }
-
-    public GetWord() {
-        return word;
-    }
-
-    public void SetWord(wordType type) {
-        type = type;
+    public Word(string text, WordType type) {
+        WordText = text;
+        WordType = type;
     }
 }

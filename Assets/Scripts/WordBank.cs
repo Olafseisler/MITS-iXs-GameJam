@@ -25,9 +25,9 @@ public class WordBank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Verbs = ReadWords("Assets/Resources/verbs.txt", WordType.Verbs);
-        Nouns = ReadWords("Assets/Resources/nouns.txt", WordType.Nouns);
-        Adjectives = ReadWords("Assets/Resources/adjectives.txt", WordType.Adjectives);
+        Verbs = ReadWords("Assets/Resources/verbs.txt", WordType.Verb);
+        Nouns = ReadWords("Assets/Resources/nouns.txt", WordType.Noun);
+        Adjectives = ReadWords("Assets/Resources/adjectives.txt", WordType.Adjective);
 
         // print all as a test
         Debug.Log("--VERBS--");

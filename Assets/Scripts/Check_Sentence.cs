@@ -14,7 +14,7 @@ public class Check_Sentence : MonoBehaviour
             if (i == 0)
             {
                 // WordType template-d peaks �le m�tlema. Siin praegu lambist tehtud.
-                if (sentence[0].WordType == WordType.Nouns)
+                if (sentence[0].WordType == WordType.Noun)
                 {
                     isCorrect = true;
                 }
@@ -26,7 +26,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 1)
             {
-                if (sentence[1].WordType == WordType.Verbs)
+                if (sentence[1].WordType == WordType.Verb)
                 {
                     isCorrect = true;
                 }
@@ -38,7 +38,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 2)
             {
-                if (sentence[2].WordType == WordType.Adjectives)
+                if (sentence[2].WordType == WordType.Adjective)
                 {
                     isCorrect = true;
                 }
@@ -50,7 +50,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 3)
             {
-                if (sentence[3].WordType == WordType.Adjectives)
+                if (sentence[3].WordType == WordType.Adjective)
                 {
                     isCorrect = true;
                 }
@@ -62,7 +62,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 4)
             {
-                if (sentence[4].WordType == WordType.Nouns)
+                if (sentence[4].WordType == WordType.Noun)
                 {
                     isCorrect = true;
                 }
@@ -80,7 +80,7 @@ public class Check_Sentence : MonoBehaviour
 	{
         int score = 0;
 
-        if (sentence[0].WordType != WordType.Verbs || sentence[0].WordType != WordType.Nouns)
+        if (sentence[0].WordType != WordType.Verb || sentence[0].WordType != WordType.Noun)
 		{
             score--;
 		}

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class WordGen : MonoBehaviour
 {
+    // be careful when changing, it might break if there's not enough words
     [SerializeField] int WordCount = 7;
-
+    [SerializeField] int maxAmountOfType = 2;
+    [SerializeField] bool testMode = false;
     Word[] GenerateWords()
     {
         bool is_valid = false;
@@ -44,7 +46,7 @@ public class WordGen : MonoBehaviour
                     switch (randomPair.Key)
                     {
                         case "verbs":
-                            if (typeCount[0] <= 2)
+                            if (typeCount[0] <= maxAmountOfType)
                             {
                                 typeCount[0] += 1;
                                 is_valid = true;
@@ -55,7 +57,7 @@ public class WordGen : MonoBehaviour
                             }
                             break;
                         case "adjectives":
-                            if (typeCount[1] <= 2)
+                            if (typeCount[1] <= maxAmountOfType)
                             {
                                 typeCount[1] += 1;
                                 is_valid = true;
@@ -66,7 +68,7 @@ public class WordGen : MonoBehaviour
                             }
                             break;
                         case "nouns":
-                            if (typeCount[2] <= 2)
+                            if (typeCount[2] <= maxAmountOfType)
                             {
                                 typeCount[2] += 1;
                                 is_valid = true;
@@ -77,7 +79,7 @@ public class WordGen : MonoBehaviour
                             }
                             break;
                         case "subjectives":
-                            if (typeCount[3] <= 2)
+                            if (typeCount[3] <= maxAmountOfType)
                             {
                                 typeCount[3] += 1;
                                 is_valid = true;
@@ -88,7 +90,7 @@ public class WordGen : MonoBehaviour
                             }
                             break;
                         case "conjunctions":
-                            if (typeCount[4] <= 2)
+                            if (typeCount[4] <= maxAmountOfType)
                             {
                                 typeCount[4] += 1;
                                 is_valid = true;
@@ -121,13 +123,15 @@ public class WordGen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Application.isEditor)
+        if (!testMode)
         {
-            Word[] words = GenerateWords();
-            foreach (Word word in words)
-            {
-                Debug.Log(word.WordText);
-            }
+            return;
+        }
+
+        Word[] words = GenerateWords();
+        foreach (Word word in words)
+        {
+          Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
     }
 

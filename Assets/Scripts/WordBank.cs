@@ -4,6 +4,8 @@ using System.Linq;
 using System.Collections.Generic;
 public class WordBank : MonoBehaviour
 {
+    [SerializeField] bool testMode = false;
+
     public static Dictionary<string, List<Word>> wordDictionary = new() {
         { "verbs", new List<Word>() },
         { "nouns", new List<Word>() },
@@ -19,7 +21,18 @@ public class WordBank : MonoBehaviour
         int i = 0;
         foreach (string line in File.ReadLines(path))
         {
-            words.Add(new Word(line, type));
+            string[] data = line.Trim().Split(':');
+            if (data[0].Length > 0) {
+            // has plural form
+            if (data.Length > 1)
+            {
+                words.Add(new Word(data[0], type, data[1]));
+            }
+            // no plural form
+            else { 
+                words.Add(new Word(data[0], type));
+            }
+            }
             i++;
         }
         return words;
@@ -79,8 +92,8 @@ public class WordBank : MonoBehaviour
             {"conjunctions",  ReadWords("Assets/Resources/conjunctions.txt", WordType.Conjunction) },
         };
         SentenceTemplates = ReadTemplate("Assets/Resources/templates.txt");
-        // print all as a test if running in editor
-        if (!Application.isEditor)
+        // print all as a test
+        if (!testMode)
         {
             return;
         }
@@ -88,31 +101,31 @@ public class WordBank : MonoBehaviour
         Debug.Log("--VERBS--");
         foreach (Word word in wordDictionary["verbs"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--NOUNS--");
         foreach (Word word in wordDictionary["nouns"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--ADJECTIVES--");
         foreach (Word word in wordDictionary["adjectives"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--SUBJECTIVES--");
         foreach (Word word in wordDictionary["subjectives"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--CONJUNCTIONS--");
         foreach (Word word in wordDictionary["conjunctions"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
     }
 

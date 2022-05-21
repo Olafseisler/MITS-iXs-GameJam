@@ -2,7 +2,7 @@ N:snoutband:snoutbands
 N:sow:sows
 N:oinker:oinkers
 N:glutton:gluttons
-N warthog:warthogs
+N:warthog:warthogs
 N:face-stuffer:face-stuffers
 N:hogwash:hogworts
 A:pink-faced

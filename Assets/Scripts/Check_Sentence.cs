@@ -14,7 +14,7 @@ public class Check_Sentence : MonoBehaviour
             if (i == 0)
             {
                 // WordType template-d peaks üle mõtlema. Siin praegu lambist tehtud.
-                if (lause[0].WordType == WordType.Nouns)
+                if (lause[0].WordType == WordType.Noun)
                 {
                     isCorrect = true;
                 }
@@ -26,7 +26,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 1)
             {
-                if (lause[1].WordType == WordType.Verbs)
+                if (lause[1].WordType == WordType.Verb)
                 {
                     isCorrect = true;
                 }
@@ -38,7 +38,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 2)
             {
-                if (lause[2].WordType == WordType.Adjectives)
+                if (lause[2].WordType == WordType.Adjective)
                 {
                     isCorrect = true;
                 }
@@ -50,7 +50,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 3)
             {
-                if (lause[3].WordType == WordType.Adjectives)
+                if (lause[3].WordType == WordType.Adjective)
                 {
                     isCorrect = true;
                 }
@@ -62,7 +62,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 4)
             {
-                if (lause[4].WordType == WordType.Nouns)
+                if (lause[4].WordType == WordType.Noun)
                 {
                     isCorrect = true;
                 }

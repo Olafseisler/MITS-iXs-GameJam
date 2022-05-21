@@ -1,9 +1,11 @@
 using UnityEngine;
 
 public enum WordType {
-    Verbs,
-    Adjectives,
-    Nouns
+    Verb,
+    Adjective,
+    Noun,
+    Subjective,
+    Conjunction
 }
 
 public class Word {

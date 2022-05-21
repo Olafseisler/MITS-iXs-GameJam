@@ -12,7 +12,6 @@ public class WordButton : MonoBehaviour
 	private void Start()
 	{
 		slotsContainer = GameObject.FindWithTag("SlotsContainer").GetComponent<SlotsContainer>();
-		buttonText = transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
 	}
 
 	public void setWordButtonText(Word word)

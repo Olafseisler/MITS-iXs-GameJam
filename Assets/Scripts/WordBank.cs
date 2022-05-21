@@ -24,14 +24,14 @@ public class WordBank : MonoBehaviour
             string[] data = line.Trim().Split(':');
             if (data[0].Length > 0) {
             // has plural form
-            if (data.Length > 1)
-            {
-                words.Add(new Word(data[0], type, data[1]));
-            }
+                if (data.Length > 1)
+                {
+                    words.Add(new Word(data[0], type, data[1]));
+                }
             // no plural form
-            else { 
-                words.Add(new Word(data[0], type));
-            }
+                else { 
+                    words.Add(new Word(data[0], type));
+                }
             }
             i++;
         }

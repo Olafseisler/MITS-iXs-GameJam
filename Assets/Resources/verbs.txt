@@ -1,4 +1,11 @@
-run
-swim
-jump
-walk
+is:are
+has:have
+has done:have done
+goes to:go to
+swims in:swim in
+flies like:fly like
+smells like:smell like
+needs: need
+sours:sour
+
+

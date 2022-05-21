@@ -1,0 +1,18 @@
+N:jackass
+N:ass-hat
+A:neighing
+A:bare-assed
+A:bucking
+A:equine
+V:harness
+N:hippo
+N:mule
+A:stubborn
+N:haystack
+V:race ahead like
+A:pony-tailed
+A:buck-toothed
+V:buck up
+V:pass the buck to
+A:half-assed
+V:go haywire

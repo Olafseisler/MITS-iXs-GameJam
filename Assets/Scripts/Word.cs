@@ -9,11 +9,20 @@ public enum WordType {
 }
 
 public class Word {
-    [SerializeField] public string WordText { get; set; }
-    public WordType WordType { get; set; }
 
-    public Word(string text, WordType type) {
-        WordText = text;
+    public string WordText { get; set; }
+    public string WordTextPlural { get; set; }
+
+    public Word(string singular, WordType type, string plural = "") {
+        WordText = singular;
+        if (plural.Length == 0) // in case there is no plural form, default to singular
+        {
+            WordTextPlural = singular;
+        }
+        else
+        {
+            WordTextPlural = plural;
+        }
         WordType = type;
     }
 }

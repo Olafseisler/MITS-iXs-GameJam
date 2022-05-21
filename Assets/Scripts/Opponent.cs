@@ -15,13 +15,12 @@ public class Opponent : MonoBehaviour
         responseText.gameObject.SetActive(false);
     }
 
-    public Dictionary<string, List<Word>> triggerDictionary = new()
-    {
-        { "verbs", new List<Word>() },
-        { "nouns", new List<Word>() },
-        { "adjectives", new List<Word>() },
-        { "subjectives", new List<Word>() },
-        { "conjunctions", new List<Word>() },
+    public Dictionary<WordType, List<Word>> triggerDictionary = new() {
+        { WordType.Verb, new List<Word>() },
+        { WordType.Noun, new List<Word>() },
+        { WordType.Adjective, new List<Word>() },
+        { WordType.Subjective, new List<Word>() },
+        { WordType.Conjunction, new List<Word>() },
     };
 
     public Opponent(string character)
@@ -50,31 +49,31 @@ public class Opponent : MonoBehaviour
                             case "V":
                             {
                                 wordType = WordType.Verb;
-                                triggerDictionary["verbs"].Add(new Word(data[1], wordType, plural));
+                                triggerDictionary[WordType.Verb].Add(new Word(data[1], wordType, plural));
                                 break;
                             }
                             case "A":
                             {
                                 wordType = WordType.Adjective;
-                                triggerDictionary["adjectives"].Add(new Word(data[1], wordType, plural));
+                                triggerDictionary[WordType.Adjective].Add(new Word(data[1], wordType, plural));
                                 break;
                             }
                             case "N":
                             {
                                 wordType = WordType.Noun;
-                                triggerDictionary["nouns"].Add(new Word(data[1], wordType, plural));
+                                triggerDictionary[WordType.Noun].Add(new Word(data[1], wordType, plural));
                                 break;
                             }
                             case "S":
                             {
                                 wordType = WordType.Subjective;
-                                triggerDictionary["subjectives"].Add(new Word(data[1], wordType, plural));
+                                triggerDictionary[WordType.Subjective].Add(new Word(data[1], wordType, plural));
                                 break;
                             }
                             case "C":
                             {
                                 wordType = WordType.Conjunction;
-                                triggerDictionary["conjunctions"].Add(new Word(data[1], wordType, plural));
+                                triggerDictionary[WordType.Conjunction].Add(new Word(data[1], wordType, plural));
                                 break;
                             }
                             default:
@@ -94,7 +93,7 @@ public class Opponent : MonoBehaviour
     public int TriggerCount(Word[] sentence)
     {
         int trigger_count = 0;
-        foreach (string key in triggerDictionary.Keys)
+        foreach (WordType key in triggerDictionary.Keys)
         {
             foreach (Word word in triggerDictionary[key])
             {
@@ -113,7 +112,7 @@ public class Opponent : MonoBehaviour
 
     public void doDamage(Word[] sentence)
 	{
-        health -= getDamage(sentence);
+        health -= 3; //getDamage(sentence);
         if (health <= 0)
 		{
             gameController.eventOpponentDead();

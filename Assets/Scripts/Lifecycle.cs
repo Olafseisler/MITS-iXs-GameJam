@@ -11,6 +11,7 @@ public class Lifecycle : MonoBehaviour
     public bool isOpponentAliveFlag;
     public bool isPlayerAliveFlag;
     public bool areOpponentsLeftFlag;
+    private int cycleCounter = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class Lifecycle : MonoBehaviour
             Debug.LogWarning("Expected to be in state " + expectedCurrent.ToString() + " was in state " + currentState.ToString());
             return;
 		}*/
+
+        Debug.Log(++cycleCounter);
 
         switch (currentState)
 		{
@@ -48,7 +51,6 @@ public class Lifecycle : MonoBehaviour
 				}
 				else
 				{
-                    raiseToNextOpponent();
 				}
                 break;
             case State.HURT_PLAYER:

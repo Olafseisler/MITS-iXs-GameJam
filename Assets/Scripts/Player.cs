@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    [SerializeField] TMPro.TextMeshProUGUI responseText;
+    [SerializeField] int health;
+
+
+
+    private void Start()
     {
-        
+        responseText.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void getResponseFromPlayer(Word[] words)
+	{
+        string response = string.Empty;
+        foreach(Word word in words)
+		{
+            response += word.WordText + " ";
+		}
+        setOpponentResponseTextBox(response);
+	}
+
+    private void setOpponentResponseTextBox(string text)
     {
-        
+        responseText.gameObject.SetActive(true);
+        responseText.text = text;
     }
+
+
 }

@@ -26,11 +26,6 @@ public class RandomWordsContainer : MonoBehaviour
         }
     }
 
-	private void Start()
-	{
-    }
-
-
 
     public void generateNewWords()
     {

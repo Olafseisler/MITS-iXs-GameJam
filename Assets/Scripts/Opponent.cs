@@ -14,9 +14,33 @@ public class Opponent : MonoBehaviour
         { "conjunctions", new List<Word>() },
     };
 
+    List<string> ResponseList;
+
     public Opponent(string character)
     {
-            ReadTriggers(character);
+        ReadTriggers(character);
+        ResponseList = ReadResponses();
+    }
+
+    static List<string> ReadResponses()
+    {
+        List<string> responses = new();
+        foreach (string line in File.ReadLines("Assets/Resources/Opponents/responses.txt"))
+        {
+            string item = line.Trim();
+            if (item.Length > 0)
+            {
+                responses.Add(item);
+            }
+        }
+        return responses;
+    }
+    public string GetRandomResponse()
+    {
+        int responseIndex = Random.Range(0, ResponseList.Count);
+        string response = ResponseList[responseIndex];
+        ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
+        return response;
     }
 
     void ReadTriggers(string character)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Lifecycle : MonoBehaviour
 {
+    [SerializeField] GameController gameController;
+
     public State currentState = State.START;
     private int lastCycle = 0;
     private int currentCycle;
@@ -11,7 +13,7 @@ public class Lifecycle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        doTransition();
     }
 
     public void doTransition()
@@ -25,8 +27,9 @@ public class Lifecycle : MonoBehaviour
         switch (currentState)
 		{
             case State.START:
-                raiseToPlayerTurn();
+                raiseToPlayerTurnFromStart();
                 break;
+                
             case State.PLAYER_TURN:
                 raiseToDragAndSend();
                 break;
@@ -46,7 +49,7 @@ public class Lifecycle : MonoBehaviour
             case State.HURT_PLAYER:
                 if (isPlayerAlive())
 				{
-                    raiseToPlayerTurn();
+                    raiseToPlayerTurnFromPlayerHurt();
 				} else
 				{
                     raiseToPlayerDeadEnd();
@@ -68,7 +71,7 @@ public class Lifecycle : MonoBehaviour
             case State.NEXT_OPPONENT:
                 if(areOpponentsRemaining())
 				{
-                    raiseToPlayerTurn();
+                    raiseToPlayerTurnFromNewOpponent();
 				} else
 				{
                     raiseOpponentsAllDead();
@@ -113,21 +116,37 @@ public class Lifecycle : MonoBehaviour
 
     // Transition methods (siirded)
 
-    private void raiseToPlayerTurn() {
-        Debug.Log("jobi");
+    private void raiseToPlayerTurnFromStart() {
+        Debug.Log("raiseToPlayerTurnFromStart");
+        // TODO: transition anim
         this.currentState = State.PLAYER_TURN;
 
         doTransition();
     }
+    private void raiseToPlayerTurnFromNewOpponent()
+    {
+        Debug.Log("raiseToPlayerTurnFromNewOpponent");
+        this.currentState = State.PLAYER_TURN;
+
+        doTransition();
+    }
+    private void raiseToPlayerTurnFromPlayerHurt()
+    {
+        Debug.Log("raiseToPlayerTurnFromOpponentDamage");
+        this.currentState = State.PLAYER_TURN;
+        
+        doTransition();
+    }
     private void raiseToDragAndSend() {
         Debug.Log("blyat");
+        gameController.genererateRandomWords();
         this.currentState = State.DRAG_AND_SEND;
 
-        doTransition(); 
     }
     private void raiseToHurtOpponent() {
         Debug.Log("hurtOpponent");
         this.currentState = State.HURT_OPPONENT;
+
     }
     private void raiseToOpponentTurn()
 	{

@@ -6,13 +6,14 @@ public class WordButton : MonoBehaviour
 {
 	public Word word { get; set; }
 	[SerializeField] TMPro.TextMeshProUGUI buttonText;
-	SlotsContainer slotsContainer;
-	bool inContainer = false;
+
+	public RandomWordsContainer parentContainer { get; set; }
 
 	private void Start()
 	{
-		slotsContainer = GameObject.FindWithTag("SlotsContainer").GetComponent<SlotsContainer>();
 	}
+
+	
 
 	public void setWordButtonText(Word word)
 	{
@@ -20,12 +21,10 @@ public class WordButton : MonoBehaviour
 		buttonText.text = word.WordText;
 	}
 
-	public void sendWordToContainer()
+	public void sendSelfToInsult()
 	{
-		if (!inContainer)
-		{
-			slotsContainer.addWordToContainer(transform);
-			inContainer = true;
-		}
+		this.parentContainer.sendWordToInsult(this);
 	}
+
+	
 }

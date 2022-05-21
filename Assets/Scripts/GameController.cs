@@ -4,50 +4,41 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] GameObject slotsContainer;
-    [SerializeField] GameObject randomWordsContainer;
+    [SerializeField] InsultContainer insultsContainer;
+    [SerializeField] RandomWordsContainer randomWordsContainer;
+    [SerializeField] Lifecycle lifecycle;
     Word[] generatedWords;
-    [SerializeField] WordGen wordGen;
     [SerializeField] GameObject wordbuttonPrefab;
     
     // Start is called before the first frame update
     void Start()
     {
-        generatedWords = wordGen.GenerateWords();
-        GenerateWordButtons(generatedWords);
+        this.insultsContainer.gameController = this;
+        randomWordsContainer.gameController = this;
     }
     
-    public Word[] getWordsFromSlots()
+
+
+    public void genererateRandomWords()
 	{
-        Word[] words = new Word[5];
-        Transform[] wordSlots = slotsContainer.GetComponent<SlotsContainer>().wordSlots;
-
-        for (int i = 0; i < wordSlots.Length; i++)
-        {
-            if (wordSlots[i].childCount > 0) { 
-                Transform t = wordSlots[i].GetChild(0);
-                words[i] = t.GetComponent<WordButton>().word;
-                Debug.Log(words[i].WordText != null ? words[i].WordText : " ");
-            }
-            
-        }
-
-        return words;
-    }
-
-    void GenerateWordButtons(Word[] words)
-	{
-		foreach (Word w in words)
-		{
-			GameObject newButton = Instantiate(wordbuttonPrefab);
-            newButton.GetComponent<WordButton>().setWordButtonText(w);
-            randomWordsContainer.GetComponent<SlotsContainer>().addWordToContainer(newButton.transform);
-		}
+        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords();
+        
 	}
 
     public void checkWordOrder()
 	{
-        Word[] words = getWordsFromSlots();
+
+	}
+
+    public void allSlotsFull()
+	{
+        lifecycle.doTransition();
+    }
+
+
+    public void sendWordToInsultContainer(Word word)
+	{
+        this.insultsContainer.addToWordToInsult(word);
 	}
 
     void checkTriggers()

@@ -3,26 +3,10 @@ has:have
 has done:have done
 goes to:go to
 drools:drool
+emits:emit
+digs up:dig up
+emerges from:emerge from
 takes back:take back
-swims in:swim in
-blabs like:blab like
-roasts:roast
-flies like:fly like
-smells like:smell like
-exorcises:exorcise
-shortens:shorten
-breaks:break
-looks like:look like
-needs:need
-sours:sour
-swallow:swallows
-pretends:pretend
-pops up:pop up
-practices:practice
-curdles:curdle
-dampens:dampen
-appears to be:appear to be
-spoils:spoil
 swims in:swim in
 blabs like:blab like
 roasts:roast
@@ -32,10 +16,16 @@ smells like:smell like
 sounds like:sound like
 exorcises:exorcise
 drags in:drag in
+hops:hop
 shortens:shorten
 discharges:discharge
 breaks:break
+slurps:slurp
+trots about:trot about
+inhibits:inhibit
 keeps:keep
+gambles with:gamble with
+sings like:sing like
 tastes like:taste like
 harnesses:harness
 exudes:exude

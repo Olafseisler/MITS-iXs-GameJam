@@ -260,7 +260,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4884371632738278751}
         m_TargetAssemblyTypeName: WordButton, Assembly-CSharp
-        m_MethodName: sendWordToContainer
+        m_MethodName: sendSelfToInsult
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

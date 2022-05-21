@@ -9,7 +9,7 @@ public enum WordType {
 }
 
 public class Word {
-    public string WordText { get; set; }
+    [SerializeField] public string WordText { get; set; }
     public WordType WordType { get; set; }
 
     public Word(string text, WordType type) {

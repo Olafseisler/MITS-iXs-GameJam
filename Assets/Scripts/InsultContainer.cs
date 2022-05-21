@@ -18,12 +18,6 @@ public class InsultContainer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void addToWordToInsult(Word word)
     {
         wordButtons[currentInsult].setWordButtonText(word);
@@ -37,5 +31,26 @@ public class InsultContainer : MonoBehaviour
 	}
 
 
-    
+
+    public Word[] getWords()
+	{
+        Word[] words = new Word[5];
+        for(int i = 0; i < wordButtons.Length; i++)
+		{
+            words[i] = wordButtons[i].word;
+		}
+        return words; 
+	}
+
+
+    public void removeOldInsults()
+    {
+        currentInsult = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            wordButtons[i].gameObject.SetActive(false);
+        }
+    }
+
+
 }

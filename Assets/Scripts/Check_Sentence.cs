@@ -11,7 +11,7 @@ public class Check_Sentence : MonoBehaviour
             for (int i = 0; i < sentence.Count; i++)
             {
                     // if sentence does not match template
-                    if (!(sentence[i].WordType == template[i]))
+                    if (!(sentence[i].wordType == template[i]))
                     {
                         break;
                     }

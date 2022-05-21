@@ -5,13 +5,14 @@ using UnityEngine;
 public class SlotsContainer : MonoBehaviour
 {
     public Transform[] wordSlots { get; set; }
-    [SerializeField] GameController gc;
+
+    [SerializeField] int numberOfWords = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        wordSlots = new Transform[5];
-        for (int i = 0; i < 5; i++)
+        wordSlots = new Transform[numberOfWords];
+        for (int i = 0; i < wordSlots.Length; i++)
         {
             wordSlots[i] = transform.GetChild(i);
         }

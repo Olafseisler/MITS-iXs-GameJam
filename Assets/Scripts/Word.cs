@@ -9,9 +9,9 @@ public enum WordType {
 }
 
 public class Word {
+
     public string WordText { get; set; }
     public string WordTextPlural { get; set; }
-    public WordType WordType { get; set; }
 
     public Word(string singular, WordType type, string plural = "") {
         WordText = singular;

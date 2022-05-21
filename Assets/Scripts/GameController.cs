@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    GameObject slotsContainer;
-    [SerializeField] WordButton wordbuttonPrefab;
+    [SerializeField] GameObject slotsContainer;
+    [SerializeField] GameObject randomWordsContainer;
+    Word[] generatedWords;
+    [SerializeField] WordGen wordGen;
+    [SerializeField] GameObject wordbuttonPrefab;
     
     // Start is called before the first frame update
     void Start()
     {
-        slotsContainer = GameObject.FindWithTag("SlotsContainer");
-        wordbuttonPrefab.setWordButtonText(new Word("Yo mama", WordType.Noun));
+        generatedWords = wordGen.GenerateWords();
+        GenerateWordButtons(generatedWords);
     }
     
-    public Word[] getWords()
+    public Word[] getWordsFromSlots()
 	{
         Word[] words = new Word[5];
         Transform[] wordSlots = slotsContainer.GetComponent<SlotsContainer>().wordSlots;
@@ -32,9 +35,19 @@ public class GameController : MonoBehaviour
         return words;
     }
 
+    void GenerateWordButtons(Word[] words)
+	{
+		foreach (Word w in words)
+		{
+			GameObject newButton = Instantiate(wordbuttonPrefab);
+            newButton.GetComponent<WordButton>().setWordButtonText(w);
+            randomWordsContainer.GetComponent<SlotsContainer>().addWordToContainer(newButton.transform);
+		}
+	}
+
     public void checkWordOrder()
 	{
-        Word[] words = getWords();
+        Word[] words = getWordsFromSlots();
 	}
 
     void checkTriggers()

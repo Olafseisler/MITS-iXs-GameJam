@@ -8,7 +8,9 @@ public class WordGen : MonoBehaviour
     [SerializeField] int WordCount = 7;
     [SerializeField] int maxAmountOfType = 2;
     [SerializeField] bool testMode = false;
-    Word[] GenerateWords()
+
+
+    public Word[] GenerateWords()
     {
         bool is_valid = false;
         int wordIndex;
@@ -123,16 +125,16 @@ public class WordGen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!testMode)
-        {
-            return;
-        }
+		if (!testMode)
+		{
+			return;
+		}
 
-        Word[] words = GenerateWords();
-        foreach (Word word in words)
-        {
-          Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
-        }
-    }
+		Word[] words = GenerateWords();
+		foreach (Word word in words)
+		{
+			Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
+		}
+	}
 
 }

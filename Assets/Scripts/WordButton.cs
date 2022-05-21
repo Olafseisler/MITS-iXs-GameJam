@@ -9,12 +9,6 @@ public class WordButton : MonoBehaviour
 
 	public RandomWordsContainer parentContainer { get; set; }
 
-	private void Start()
-	{
-	}
-
-	
-
 	public void setWordButtonText(Word word)
 	{
 		this.word = word;

@@ -8,6 +8,7 @@ public class Check_Sentence : MonoBehaviour
     {
         foreach (WordType[] template in WordBank.SentenceTemplates)
         {
+            Debug.Log(template.Length);
             for (int i = 0; i < sentence.Count; i++)
             {
                     // if sentence does not match template

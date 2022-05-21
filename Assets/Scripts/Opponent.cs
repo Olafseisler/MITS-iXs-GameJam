@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Opponent : MonoBehaviour
 {
-    readonly Word[] triggers;
+    public Word[] triggers { get; set; }
     public Opponent(Word[] words)
     {
         triggers = words;

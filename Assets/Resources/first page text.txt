@@ -1,6 +1,6 @@
 Intro:
 You are a hungover, penniless bunny and not that happy about the whole hungover thing.
-Obviously, the world and everyone in it are to blame. Why not show your righteous 
+The world and everyone in it are to blame obviously. Why not show your righteous 
 contempt by insulting everyone you see?
 
 How to play:
@@ -8,9 +8,19 @@ Your goal is to get to the bartender and destroy their self-worth so they fade a
 thus leaving all the lovely booze unattended. 
 Get rid of anyone who dares to stand in your way by constructing mean sentences.
 Click on the given phrases in order to form an insult. No take-backs: you can't un-say things. 
-When all five slots are full, wait for the opponent's reaction.
-You have to completely ruin their will to live. Use (more or less) proper grammar 
-and select your words carefully. It may take a few tries...
+When all five slots are full, click on the Insult! button.
+You have to completely ruin your opponents will to live. Use (more or less) proper grammar 
+and select your words carefully to do so. It may take a few tries..
+
+Outro:
+visual artist kelly tomson
+computer scientist olaf seisler
+software specialist timo jairus
+inspirational tunesmith andre randmaa
+creative writer helen leikmaa
+
+special thanks to tech savant heigo
+
 
 
 

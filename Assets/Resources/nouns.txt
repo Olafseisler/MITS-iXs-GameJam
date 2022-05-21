@@ -11,6 +11,7 @@ fopdoodle:flopdoodles
 bacterium:bacteria
 stampcrab:stampcrabs
 shabbaroon:shabbarooms
+cabbage:cabbages
 your mom:your horses
 your nostril:your pinkies
 your hat:your panties
@@ -53,4 +54,4 @@ deviant:deviants
 compost:root vegetables
 bug:bugs
 pancake:pancakes
-
+grave robber:grave robbers

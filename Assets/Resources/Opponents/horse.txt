@@ -1,3 +1,18 @@
+N jackass:jackasses
+N ass-hat:asshats
+N hippo:hippos
+N mule:mules
+N haystack:haystacks
 A neighing
-N ass-hat
-V horse-placeholder-verb 
+A bare-assed
+A bucking
+A equine
+A stubborn
+A pony-tailed 
+A buck-toothed
+A harness
+A half-assed
+V races ahead like:race ahead like
+V bucks up:buck up
+V passes the buck to:pass the buck to
+V goes haywire:go haywire

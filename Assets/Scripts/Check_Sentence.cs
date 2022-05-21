@@ -8,7 +8,6 @@ public class Check_Sentence : MonoBehaviour
     {
         foreach (WordType[] template in WordBank.SentenceTemplates)
         {
-            Debug.Log(template.Length);
             for (int i = 0; i < sentence.Count; i++)
             {
                     // if sentence does not match template
@@ -29,14 +28,14 @@ public class Check_Sentence : MonoBehaviour
     void Start()
     {
         if (Application.isEditor) {
-            Debug.Log("--CHECK SENTENCE DEBUG--");
+            //Debug.Log("--CHECK SENTENCE DEBUG--");
             List<Word> sentence = new();
             sentence.Add(new Word("test", WordType.Noun));
             sentence.Add(new Word("test", WordType.Verb));
             sentence.Add(new Word("test", WordType.Adjective));
             sentence.Add(new Word("test", WordType.Adjective));
             sentence.Add(new Word("test", WordType.Noun));
-            Debug.Log("Is sentence NVAAN valid: " + VerifySentence(sentence));
+            //Debug.Log("Is sentence NVAAN valid: " + VerifySentence(sentence));
         }
     }
 }

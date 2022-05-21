@@ -6,12 +6,12 @@ public class WordBank : MonoBehaviour
 {
     [SerializeField] bool testMode = false;
 
-    public static Dictionary<string, List<Word>> wordDictionary = new() {
-        { "verbs", new List<Word>() },
-        { "nouns", new List<Word>() },
-        { "adjectives", new List<Word>() },
-        { "subjectives", new List<Word>() },
-        { "conjunctions", new List<Word>() },
+    public static Dictionary<WordType, List<Word>> wordDictionary = new() {
+        { WordType.Verb, new List<Word>() },
+        { WordType.Noun, new List<Word>() },
+        { WordType.Adjective, new List<Word>() },
+        { WordType.Subjective, new List<Word>() },
+        { WordType.Conjunction, new List<Word>() },
     };
     public static WordType[][] SentenceTemplates { get; set; }
 
@@ -46,10 +46,11 @@ public class WordBank : MonoBehaviour
         WordType[][] sentences = new WordType[lineCount][];
         foreach (string line in File.ReadLines(path))
         {
-            WordType[] words = new WordType[line.Length];
+            WordType[] words = new WordType[5];
             o = 0;
             foreach (char type in line.Split(' ')[0])
             {
+                Debug.Log(type);
                 switch (type)
                 {
                     case 'V':
@@ -83,13 +84,13 @@ public class WordBank : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        wordDictionary = new Dictionary<string, List<Word>>()
+        wordDictionary = new Dictionary<WordType, List<Word>>()
         {
-            {"verbs", ReadWords("Assets/Resources/verbs.txt", WordType.Verb) },
-            {"nouns",  ReadWords("Assets/Resources/nouns.txt", WordType.Noun) },
-            {"adjectives",  ReadWords("Assets/Resources/adjectives.txt", WordType.Adjective) },
-            {"subjectives",  ReadWords("Assets/Resources/subjectives.txt", WordType.Subjective) },
-            {"conjunctions",  ReadWords("Assets/Resources/conjunctions.txt", WordType.Conjunction) },
+            {WordType.Verb, ReadWords("Assets/Resources/verbs.txt", WordType.Verb) },
+            {WordType.Noun,  ReadWords("Assets/Resources/nouns.txt", WordType.Noun) },
+            {WordType.Adjective,  ReadWords("Assets/Resources/adjectives.txt", WordType.Adjective) },
+            {WordType.Subjective,  ReadWords("Assets/Resources/subjectives.txt", WordType.Subjective) },
+            {WordType.Conjunction,  ReadWords("Assets/Resources/conjunctions.txt", WordType.Conjunction) },
         };
         SentenceTemplates = ReadTemplate("Assets/Resources/templates.txt");
         // print all as a test
@@ -99,31 +100,31 @@ public class WordBank : MonoBehaviour
         }
 
         Debug.Log("--VERBS--");
-        foreach (Word word in wordDictionary["verbs"])
+        foreach (Word word in wordDictionary[WordType.Verb])
         {
             Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--NOUNS--");
-        foreach (Word word in wordDictionary["nouns"])
+        foreach (Word word in wordDictionary[WordType.Noun])
         {
             Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--ADJECTIVES--");
-        foreach (Word word in wordDictionary["adjectives"])
+        foreach (Word word in wordDictionary[WordType.Adjective])
         {
             Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--SUBJECTIVES--");
-        foreach (Word word in wordDictionary["subjectives"])
+        foreach (Word word in wordDictionary[WordType.Subjective])
         {
             Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--CONJUNCTIONS--");
-        foreach (Word word in wordDictionary["conjunctions"])
+        foreach (Word word in wordDictionary[WordType.Conjunction])
         {
             Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }

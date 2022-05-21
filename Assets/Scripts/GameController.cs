@@ -56,8 +56,4 @@ public class GameController : MonoBehaviour
         this.insultContainer.addToWordToInsult(word);
 	}
 
-    void checkTriggers()
-	{
-
-	}
 }

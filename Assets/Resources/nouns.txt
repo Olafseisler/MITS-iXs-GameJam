@@ -12,6 +12,7 @@ bacterium:bacteria
 stampcrab:stampcrabs
 shabbaroon:shabbarooms
 your mom:your horses
+your nostril:your pinkies
 your hat:your panties
 your dog:your dogs
 your toe:your toes
@@ -19,6 +20,7 @@ your face:your feet
 your bottom:your earsies
 your hair:your hairs
 your wig:your wigs
+your spine:your kidneys
 your shovel:your nails
 your ancestor:your ancestors
 your eyebrow:your eyebrows
@@ -41,3 +43,14 @@ flute:flutes
 sock:socks
 elderberry:elderberries
 hamster:hamsters
+earthworm:earthworms
+accordionist:accordionists
+bassoonist:bassoonists
+French hornist:French hornists
+embezzler:embezzlers
+badger:badgers
+deviant:deviants
+compost:root vegetables
+bug:bugs
+pancake:pancakes
+

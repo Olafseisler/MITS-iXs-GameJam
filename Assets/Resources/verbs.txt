@@ -2,10 +2,41 @@ is:are
 has:have
 has done:have done
 goes to:go to
+drools:drool
+takes back:take back
 swims in:swim in
+blabs like:blab like
+roasts:roast
+catches:catch
 flies like:fly like
 smells like:smell like
-needs: need
+sounds like:sound like
+exorcises:exorcise
+drags in:drag in
+shortens:shorten
+discharges:discharge
+breaks:break
+keeps:keep
+tastes like:taste like
+harnesses:harness
+exudes:exude
+looks like:look like
+needs:need
+melts down:melt down
+embodies:embody
+hovers over:hover over
 sours:sour
-
-
+retains:retain
+swallow:swallows
+pretends:pretend
+pops up:pop up
+dips into:dip into
+fishes like:fish like
+practices:practice
+scavenges:scavenge
+gets down from:get down from
+curdles:curdle
+dampens:dampen
+appears to be:appear to be
+spoils:spoil
+barges in like:barge in like

@@ -26,9 +26,13 @@ your shovel:your nails
 your ancestor:your ancestors
 your eyebrow:your eyebrows
 headstone:headstones
+roller-coaster:roller-coasters
+land-pirate:land-pirates
 frog:frogs
+tomcat:tomcats
 abomination:abominations
 poodle:poodles
+executioner:executioners
 cannibal:cannibals
 turtle:turtles
 snail:snails

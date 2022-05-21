@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 00fe2cc61ed508843ba38097307ed863
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - 'Admiration Pains '
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8760fbc7f6c73104baa08005bdbac876, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

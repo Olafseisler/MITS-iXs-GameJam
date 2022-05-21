@@ -1,9 +1,16 @@
 pigeon-livered
+decomposed
+disregarded
+towering
+discounted
+decaying
 watered down
 bug-eating
+defrosted
 unlicked
 extinct
 hovering
+underclocked
 not so Bright
 frowned upon
 grabby
@@ -12,53 +19,6 @@ crabby
 witless
 ungifted
 beat-down
-not so Bright
-grabby
-crabby
-witless
-sour
-unwashed
-flesh-eating
-flat
-not peer-reviewed
-rumbling
-not-at-all dashing
-rumbutious
-single-celled
-undigested
-vitamin d deficient
-hamsterless
-thick
-rhythmless
-immoral
-disappointing
-shabby
-greenish-yellow
-rancid
-slurred
-half-cooked
-blithering
-warmed-up
-amateurish
-airheaded
-soggy
-scratchy
-clogged-up
-abbreviated
-pointless
-nasal
-methane-producing
-stuffed up
-candyless
-frogless
-greyish
-humid
-damp
-constipated
-lagging
-pasteurized
-routine
-Bright
 sour
 excessive
 unwashed
@@ -89,9 +49,12 @@ gooey
 greenish-yellow
 rancid
 slurred
+deflated
+drugged-up
 half-cooked
 blithering
 warmed-up
+wimpering
 amateurish
 airheaded
 soggy

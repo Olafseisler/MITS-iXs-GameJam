@@ -1,4 +1,26 @@
-run
-swim
-jump
-walk
+is:are
+has:have
+has done:have done
+goes to:go to
+drools:drool
+takes back:take back
+swims in:swim in
+blabs like:blab like
+roasts:roast
+flies like:fly like
+smells like:smell like
+exorcises:exorcise
+shortens:shorten
+breaks:break
+looks like:look like
+needs:need
+sours:sour
+swallow:swallows
+pretends:pretend
+pops up:pop up
+practices:practice
+curdles:curdle
+dampens:dampen
+appears to be:appear to be
+spoils:spoil
+

@@ -1,4 +1,43 @@
-mother
-father
-human
-rabbit
+walloper:wallopers
+grumbletonian:grumbletonians
+whiffle-whaffel: whaffles
+ratbag:ratbags
+dingbat:dingbats
+smellfungus:smellfungi
+saddle-goose:saddle-geese
+moon-calf:moon-calves
+lubberwort: lubberworts
+fopdoodle:flopdoodles
+bacterium:bacteria
+stampcrab:stampcrabs
+shabbaroon:shabbarooms
+your mom:your horses
+your hat:your panties
+your dog:your dogs
+your toe:your toes
+your face:your feet
+your bottom:your earsies
+your hair:your hairs
+your wig:your wigs
+your shovel:your nails
+your ancestor:your ancestors
+your eyebrow:your eyebrows
+headstone:headstones
+frog:frogs
+abomination:abominations
+poodle:poodles
+cannibal:cannibals
+turtle:turtles
+snail:snails
+duck:ducks
+earwig:earwigs
+pineapple:pineapples
+elephant:elephants
+mite:mites
+tuba:tubas
+cannibal:cannibals
+kitchen table:kitchen tables
+flute:flutes
+sock:socks
+elderberry:elderberries
+hamster:hamsters

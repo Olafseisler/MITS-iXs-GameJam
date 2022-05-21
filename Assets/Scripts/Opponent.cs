@@ -43,13 +43,23 @@ public class Opponent : MonoBehaviour
         }
         return responses;
     }
+
+    public string GetRandomResponse()
+    {
+        if (ResponseList == null) // pls work
+        {
+            ResponseList = ReadResponses();
+        }
+        int responseIndex = Random.Range(0, ResponseList.Count);
+        string response = ResponseList[responseIndex];
+        //ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
+        return response;
+    }
     public void getResponseFromOpponent()
     {
-        int responseIndex = Random.Range(0, ResponseList.Count);
-        setOpponentResponseTextBox(ResponseList[responseIndex]);
-        ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
+        string response = GetRandomResponse();
+        setOpponentResponseTextBox(response);
     }
-    
 
     void ReadTriggers(string character)
     {

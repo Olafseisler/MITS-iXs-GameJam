@@ -9,7 +9,7 @@ public class SlotsContainer : MonoBehaviour
     [SerializeField] int numberOfWords = 5;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         wordSlots = new Transform[numberOfWords];
         for (int i = 0; i < wordSlots.Length; i++)
@@ -22,7 +22,7 @@ public class SlotsContainer : MonoBehaviour
 	{
         for (int i = 0; i < wordSlots.Length; i++)
 		{
-            if (wordSlots[i].childCount == 0)
+            if (wordSlots[i].childCount ==  0)
 			{
                 wordButton.SetParent(wordSlots[i]);
                 wordButton.position = wordSlots[i].position;

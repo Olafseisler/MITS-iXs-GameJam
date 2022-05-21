@@ -1,4 +1,16 @@
-***eesel/hobune***
+***opponent insults bunny***
+You are very stupid.
+You have ugly boots.
+Your mama don't knit so good.
+Your puns ain't funny.
+I don't like your bicycle. 
+My granny says you stink.
+You ain't a nice fellow at all!
+You are mean like the Grinch.
+You're a hoser. 
+
+
+***horse/donkey***
 N jackass:jackasses
 N ass-hat:asshats
 N hippo:hippos
@@ -19,7 +31,7 @@ V passes the buck to:pass the buck to
 V goes haywire:go haywire	
 
 
-***põrsas*** 
+***piggy*** 
 N snoutband:snoutbands
 N sow:sows
 N oinker:oinkers
@@ -41,7 +53,7 @@ V sows:sow
 V oinks like:oink like
 
 
-***kukk***
+***rooster***
 N cockalorum: two cockalorums
 N egghead:eggheads
 N eggnog: mugs of eggnog

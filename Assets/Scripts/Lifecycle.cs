@@ -7,12 +7,17 @@ public class Lifecycle : MonoBehaviour
     [SerializeField] GameController gameController;
 
     public State currentState = State.START;
-    private int lastCycle = 0;
-    private int currentCycle;
+
+    public bool isOpponentAliveFlag;
+    public bool isPlayerAliveFlag;
+    public bool areOpponentsLeftFlag;
     
     // Start is called before the first frame update
     void Start()
     {
+        this.isOpponentAliveFlag = true;
+        this.isPlayerAliveFlag = true;
+        this.areOpponentsLeftFlag = false;
         doTransition();
     }
 
@@ -100,18 +105,18 @@ public class Lifecycle : MonoBehaviour
     // Flags / booleans (lipu meetodid)
     private bool isOpponentAlive()
 	{
-        return true;
+        return isOpponentAliveFlag;
 	}
 
     private bool isPlayerAlive()
 	{
-        return true;
+        return isPlayerAliveFlag;
 	}
 
 
     private bool areOpponentsRemaining()
 	{
-        return true;
+        return areOpponentsLeftFlag;
 	}
 
     // Transition methods (siirded)
@@ -146,25 +151,39 @@ public class Lifecycle : MonoBehaviour
     private void raiseToHurtOpponent() {
         Debug.Log("hurtOpponent");
         this.currentState = State.HURT_OPPONENT;
+        gameController.eventDoDamageToOpponent();
 
+        doTransition();
     }
     private void raiseToOpponentTurn()
 	{
+        Debug.Log("raiseToOpponentTurn");
 		this.currentState = State.OPPONENT_TURN;
+
         doTransition();
 	}
 	private void raiseToGetResponse() {
+        Debug.Log("raiseToGetResponse");
+
         this.currentState = State.GET_RESPONSE;
+        gameController.eventGetResponseFromOpponent();
         doTransition();
     }
     private void raiseToPlayerHurt() {
+        Debug.Log("raiseToPlayerHurt");
+
         this.currentState = State.HURT_PLAYER;
+        doTransition();
     }
     private void raiseToPlayerDeadEnd() {
+        Debug.Log("raiseToPlayerDeadEnd");
+
         this.currentState = State.END_PLAYER_DEAD;
         doTransition();
     }
     private void raiseToNextOpponent() {
+        Debug.Log("raiseToNextOpponent");
+
         this.currentState = State.NEXT_OPPONENT;
         doTransition();
     }

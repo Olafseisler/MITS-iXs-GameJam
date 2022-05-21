@@ -5,6 +5,16 @@ using System.IO;
 
 public class Opponent : MonoBehaviour
 {
+    [SerializeField] int health;
+    [SerializeField] GameController gameController;
+    [SerializeField] Check_Sentence checkSentence;
+    [SerializeField] TMPro.TextMeshProUGUI responseText;
+    List<string> ResponseList;
+	private void Start()
+	{
+        responseText.gameObject.SetActive(false);
+    }
+
     public Dictionary<string, List<Word>> triggerDictionary = new()
     {
         { "verbs", new List<Word>() },
@@ -17,7 +27,29 @@ public class Opponent : MonoBehaviour
     public Opponent(string character)
     {
             ReadTriggers(character);
+            ResponseList = ReadResponses();
     }
+
+    static List<string> ReadResponses()
+    {
+        List<string> responses = new();
+        foreach (string line in File.ReadLines("Assets/Resources/Opponents/responses.txt"))
+        {
+            string item = line.Trim();
+            if (item.Length > 0)
+            {
+                responses.Add(item);
+            }
+        }
+        return responses;
+    }
+    public void getResponseFromOpponent()
+    {
+        int responseIndex = Random.Range(0, ResponseList.Count);
+        setOpponentResponseTextBox(ResponseList[responseIndex]);
+        ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
+    }
+    
 
     void ReadTriggers(string character)
     {
@@ -81,7 +113,7 @@ public class Opponent : MonoBehaviour
     }
 
     // check how many triggers a sentence contains (max two)
-    public int HasTrigger(Word[] sentence)
+    public int TriggerCount(Word[] sentence)
     {
         int trigger_count = 0;
         foreach (string key in triggerDictionary.Keys)
@@ -100,5 +132,32 @@ public class Opponent : MonoBehaviour
         }
         return trigger_count;
     }
+
+    public void doDamage(Word[] sentence)
+	{
+        health -= getDamage(sentence);
+        if (health <= 0)
+		{
+            gameController.eventOpponentDead();
+		}
+	}
+
+    private int getDamage(Word[] sentence)
+	{
+        int grammarScore = 0;
+        if (checkSentence.VerifySentence(new List<Word>(sentence)))
+		{
+            grammarScore += 3;
+            grammarScore += TriggerCount(sentence);
+		}
+        return grammarScore;
+	}
+
+
+    private void setOpponentResponseTextBox(string text)
+	{
+        responseText.gameObject.SetActive(true);
+        responseText.text = text;
+	}
 
 }

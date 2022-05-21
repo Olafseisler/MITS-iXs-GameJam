@@ -6,24 +6,14 @@ A:half-assed
 A:harness
 A:neighing
 A:pony-tailed
-A:pony-tailed 
 A:stubborn
-N:ass-hat
 N:ass-hat:asshats
-N:haystack
 N:haystack:haystacks
-N:hippo
 N:hippo:hippos
-N:jackass
 N:jackass:jackasses
-N:mule
 N:mule:mules
-V:buck up
 V:bucks up:buck up
-V:go haywire
 V:goes haywire:go haywire
 V:harness
-V:pass the buck to
 V:passes the buck to:pass the buck to
-V:race ahead like
 V:races ahead like:race ahead like

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] InsultContainer insultsContainer;
+    [SerializeField] InsultContainer insultContainer;
     [SerializeField] RandomWordsContainer randomWordsContainer;
+    [SerializeField] Opponent opponent;
+    [SerializeField] Player player;
     [SerializeField] Lifecycle lifecycle;
     Word[] generatedWords;
     [SerializeField] GameObject wordbuttonPrefab;
@@ -13,11 +15,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.insultsContainer.gameController = this;
+        this.insultContainer.gameController = this;
         randomWordsContainer.gameController = this;
     }
-    
-
 
     public void genererateRandomWords()
 	{
@@ -25,20 +25,35 @@ public class GameController : MonoBehaviour
         
 	}
 
-    public void checkWordOrder()
+    public void eventGetResponseFromOpponent()
 	{
+        opponent.getResponseFromOpponent();
 
+    }
+
+
+    public void eventDoDamageToOpponent()
+	{
+        player.getResponseFromPlayer(insultContainer.getWords());
+        opponent.doDamage(insultContainer.getWords());
+        insultContainer.removeOldInsults();
+	}
+
+    public void eventOpponentDead()
+	{
+        lifecycle.isOpponentAliveFlag = false;
 	}
 
     public void allSlotsFull()
 	{
+        randomWordsContainer.removeOldWords();
         lifecycle.doTransition();
     }
 
 
     public void sendWordToInsultContainer(Word word)
 	{
-        this.insultsContainer.addToWordToInsult(word);
+        this.insultContainer.addToWordToInsult(word);
 	}
 
     void checkTriggers()

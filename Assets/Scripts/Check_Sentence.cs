@@ -1,108 +1,41 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Check_Sentence : MonoBehaviour
 {
-
-    Word[] sentence;
-    public bool Check5WordSentence()
+    // checks if the sentence matches a template
+    public bool VerifySentence(List<Word> sentence)
     {
-        bool isCorrect = false;
-        for (int i = 0; i < sentence.Length; i++)
+        foreach (WordType[] template in WordBank.SentenceTemplates)
         {
-            if (i == 0)
+            for (int i = 0; i < sentence.Count; i++)
             {
-                // WordType template-d peaks �le m�tlema. Siin praegu lambist tehtud.
-                if (sentence[0].WordType == WordType.Noun)
-                {
-                    isCorrect = true;
-                }
-                else
-                {
-                    isCorrect = false;
-                    break;
-                }
-            }
-            else if (i == 1)
-            {
-                if (sentence[1].WordType == WordType.Verb)
-                {
-                    isCorrect = true;
-                }
-                else
-                {
-                    isCorrect = false;
-                    break;
-                }
-            }
-            else if (i == 2)
-            {
-                if (sentence[2].WordType == WordType.Adjective)
-                {
-                    isCorrect = true;
-                }
-                else
-                {
-                    isCorrect = false;
-                    break;
-                }
-            }
-            else if (i == 3)
-            {
-                if (sentence[3].WordType == WordType.Adjective)
-                {
-                    isCorrect = true;
-                }
-                else
-                {
-                    isCorrect = false;
-                    break;
-                }
-            }
-            else if (i == 4)
-            {
-                if (sentence[4].WordType == WordType.Noun)
-                {
-                    isCorrect = true;
-                }
-                else
-                {
-                    isCorrect = false;
-                    break;
-                }
+                    // if sentence does not match template
+                    if (!(sentence[i].WordType == template[i]))
+                    {
+                        break;
+                    }
+
+                    // if the last word is correct, so is the entire sentence
+                    if (i == sentence.Count -1 ) {
+                        return true;
+                    }
             }
         }
-        return isCorrect;
+        return false;
     }
 
-    public int checkWordOrder()
-	{
-        int score = 0;
-
-        if (sentence[0].WordType != WordType.Verb || sentence[0].WordType != WordType.Noun)
-		{
-            score--;
-		}
-
-        return score;
-	}
-
-    public int checkTriggers(Opponent opponent)
-	{
-        int score = 0;
-        for (int i = 0; i < sentence.Length; i++)
-		{
-            for (int j = 0; i < opponent.triggers.Length; i++)
-			{
-                if (sentence[i].Equals(opponent.triggers[j]))
-				{
-                    score++;
-				}
-			}
-		}
-
-        return score;
-	}
-
+    void Start()
+    {
+        if (Application.isEditor) {
+            Debug.Log("--CHECK SENTENCE DEBUG--");
+            List<Word> sentence = new();
+            sentence.Add(new Word("test", WordType.Noun));
+            sentence.Add(new Word("test", WordType.Verb));
+            sentence.Add(new Word("test", WordType.Adjective));
+            sentence.Add(new Word("test", WordType.Adjective));
+            sentence.Add(new Word("test", WordType.Noun));
+            Debug.Log("Is sentence NVAAN valid: " + VerifySentence(sentence));
+        }
+    }
 }

@@ -14,15 +14,6 @@ public class Lifecycle : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
-
     public void doTransition()
 	{
         /*if(!expectedCurrent.Equals(currentState))

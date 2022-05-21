@@ -5,16 +5,16 @@ using UnityEngine;
 public class Check_Sentence : MonoBehaviour
 {
 
-    List<Word> lause = new();
+    Word[] sentence;
     public bool Check5WordSentence()
     {
         bool isCorrect = false;
-        for (int i = 0; i < lause.Count; i++)
+        for (int i = 0; i < sentence.Length; i++)
         {
             if (i == 0)
             {
-                // WordType template-d peaks üle mõtlema. Siin praegu lambist tehtud.
-                if (lause[0].WordType == WordType.Noun)
+                // WordType template-d peaks ï¿½le mï¿½tlema. Siin praegu lambist tehtud.
+                if (sentence[0].WordType == WordType.Nouns)
                 {
                     isCorrect = true;
                 }
@@ -26,7 +26,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 1)
             {
-                if (lause[1].WordType == WordType.Verb)
+                if (sentence[1].WordType == WordType.Verbs)
                 {
                     isCorrect = true;
                 }
@@ -38,7 +38,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 2)
             {
-                if (lause[2].WordType == WordType.Adjective)
+                if (sentence[2].WordType == WordType.Adjectives)
                 {
                     isCorrect = true;
                 }
@@ -50,7 +50,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 3)
             {
-                if (lause[3].WordType == WordType.Adjective)
+                if (sentence[3].WordType == WordType.Adjectives)
                 {
                     isCorrect = true;
                 }
@@ -62,7 +62,7 @@ public class Check_Sentence : MonoBehaviour
             }
             else if (i == 4)
             {
-                if (lause[4].WordType == WordType.Noun)
+                if (sentence[4].WordType == WordType.Nouns)
                 {
                     isCorrect = true;
                 }
@@ -75,15 +75,34 @@ public class Check_Sentence : MonoBehaviour
         }
         return isCorrect;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int checkWordOrder()
+	{
+        int score = 0;
+
+        if (sentence[0].WordType != WordType.Verbs || sentence[0].WordType != WordType.Nouns)
+		{
+            score--;
+		}
+
+        return score;
+	}
+
+    public int checkTriggers(Opponent opponent)
+	{
+        int score = 0;
+        for (int i = 0; i < sentence.Length; i++)
+		{
+            for (int j = 0; i < opponent.triggers.Length; i++)
+			{
+                if (sentence[i].Equals(opponent.triggers[j]))
+				{
+                    score++;
+				}
+			}
+		}
+
+        return score;
+	}
+
 }

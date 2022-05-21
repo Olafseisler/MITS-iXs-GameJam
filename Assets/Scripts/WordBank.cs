@@ -4,24 +4,35 @@ using System.Linq;
 using System.Collections.Generic;
 public class WordBank : MonoBehaviour
 {
-    public Dictionary<string, Word[]> wordDictionary = new()
-    {
-        {"verbs", new Word[] {} },
-        {"nouns", new Word[] {} },
-        {"adjectives", new Word[] {} },
-        {"subjectives", new Word[] {} },
-        {"conjunctions", new Word[] {} },
+    [SerializeField] bool testMode = false;
+
+    public static Dictionary<string, List<Word>> wordDictionary = new() {
+        { "verbs", new List<Word>() },
+        { "nouns", new List<Word>() },
+        { "adjectives", new List<Word>() },
+        { "subjectives", new List<Word>() },
+        { "conjunctions", new List<Word>() },
     };
     public static WordType[][] SentenceTemplates { get; set; }
 
-    static Word[] ReadWords(string path, WordType type)
+    static List<Word> ReadWords(string path, WordType type)
     {
-        var lineCount = File.ReadLines(path).Count();
-        Word[] words = new Word[lineCount];
+        List<Word> words = new();
         int i = 0;
         foreach (string line in File.ReadLines(path))
         {
-            words[i] = new Word(line, type);
+            string[] data = line.Trim().Split(':');
+            if (data[0].Length > 0) {
+            // has plural form
+            if (data.Length > 1)
+            {
+                words.Add(new Word(data[0], type, data[1]));
+            }
+            // no plural form
+            else { 
+                words.Add(new Word(data[0], type));
+            }
+            }
             i++;
         }
         return words;
@@ -72,7 +83,7 @@ public class WordBank : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        wordDictionary = new Dictionary<string, Word[]>()
+        wordDictionary = new Dictionary<string, List<Word>>()
         {
             {"verbs", ReadWords("Assets/Resources/verbs.txt", WordType.Verb) },
             {"nouns",  ReadWords("Assets/Resources/nouns.txt", WordType.Noun) },
@@ -81,8 +92,8 @@ public class WordBank : MonoBehaviour
             {"conjunctions",  ReadWords("Assets/Resources/conjunctions.txt", WordType.Conjunction) },
         };
         SentenceTemplates = ReadTemplate("Assets/Resources/templates.txt");
-        // print all as a test if running in editor
-        if (!Application.isEditor)
+        // print all as a test
+        if (!testMode)
         {
             return;
         }
@@ -90,31 +101,31 @@ public class WordBank : MonoBehaviour
         Debug.Log("--VERBS--");
         foreach (Word word in wordDictionary["verbs"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--NOUNS--");
         foreach (Word word in wordDictionary["nouns"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--ADJECTIVES--");
         foreach (Word word in wordDictionary["adjectives"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--SUBJECTIVES--");
         foreach (Word word in wordDictionary["subjectives"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
 
         Debug.Log("--CONJUNCTIONS--");
         foreach (Word word in wordDictionary["conjunctions"])
         {
-            Debug.Log(word.WordText);
+            Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
         }
     }
 

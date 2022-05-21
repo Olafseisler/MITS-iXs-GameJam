@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class WordButton : MonoBehaviour
 {
+	public Word word { get; set; }
+	[SerializeField] TMPro.TextMeshProUGUI buttonText;
 	SlotsContainer slotsContainer;
 	bool inContainer = false;
 
 	private void Start()
 	{
 		slotsContainer = GameObject.FindWithTag("SlotsContainer").GetComponent<SlotsContainer>();
+		buttonText = transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
+	}
+
+	public void setWordButtonText(Word word)
+	{
+		this.word = word;
+		buttonText.text = word.WordText;
 	}
 
 	public void sendWordToContainer()

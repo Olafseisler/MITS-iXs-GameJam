@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class SlotsContainer : MonoBehaviour
 {
-    static Transform[] wordSlots;
+    public Transform[] wordSlots { get; set; }
+    [SerializeField] GameController gc;
 
     // Start is called before the first frame update
     void Start()
     {
         wordSlots = new Transform[5];
         for (int i = 0; i < 5; i++)
-		{
+        {
             wordSlots[i] = transform.GetChild(i);
-		}
+        }
     }
 
     public void addWordToContainer(Transform wordButton)

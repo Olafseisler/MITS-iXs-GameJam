@@ -43,6 +43,14 @@ public class Opponent : MonoBehaviour
 
     void ReadTriggers(string character)
     {
+        triggerDictionary = new()
+        {
+            { WordType.Verb, new List<Word>() },
+            { WordType.Noun, new List<Word>() },
+            { WordType.Adjective, new List<Word>() },
+            { WordType.Subjective, new List<Word>() },
+            { WordType.Conjunction, new List<Word>() },
+        };
         WordType wordType;
         List<WordType> removeList = new();
         string plural = "";

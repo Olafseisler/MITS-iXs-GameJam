@@ -17,8 +17,8 @@ public class Opponent : MonoBehaviour
     [SerializeField] Sprite pigImage;
     [SerializeField] Sprite horseImage;
 
-    static int pigHealth = 6;
-    static int horseHealth = 12;
+    static int pigHealth = 3;
+    static int horseHealth = 8;
    
 
     List<string> ResponseList;
@@ -169,7 +169,7 @@ public class Opponent : MonoBehaviour
         if (checkSentence.VerifySentence(new List<Word>(sentence)))
 		{
             grammarScore += 3;
-            //grammarScore += TriggerCount(sentence);
+            grammarScore += TriggerCount(sentence);
 		}
         Debug.Log("grammar: " + grammarScore);
         return grammarScore;

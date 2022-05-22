@@ -1520,6 +1520,7 @@ MonoBehaviour:
   health: 0
   anim: {fileID: 1013389234}
   gameController: {fileID: 561204559}
+  winningSprite: {fileID: 0}
 --- !u!95 &1013389234
 Animator:
   serializedVersion: 4
@@ -2538,7 +2539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35b565348cb8694e88bf63dcd0b8aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   image: {fileID: 1328634846}
   gameController: {fileID: 561204559}
   checkSentence: {fileID: 561204564}
@@ -2998,7 +2999,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69b299b11657f2240a5bc2562c3d3ffe, type: 2}
-  m_sharedMaterial: {fileID: 8657272207822659710, guid: 69b299b11657f2240a5bc2562c3d3ffe, type: 2}
+  m_sharedMaterial: {fileID: -3045559343466814883, guid: 69b299b11657f2240a5bc2562c3d3ffe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3133,7 +3134,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69b299b11657f2240a5bc2562c3d3ffe, type: 2}
-  m_sharedMaterial: {fileID: 8657272207822659710, guid: 69b299b11657f2240a5bc2562c3d3ffe, type: 2}
+  m_sharedMaterial: {fileID: -3045559343466814883, guid: 69b299b11657f2240a5bc2562c3d3ffe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

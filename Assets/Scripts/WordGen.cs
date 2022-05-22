@@ -20,11 +20,6 @@ public class WordGen : MonoBehaviour
         { 
             List<Word> wordsOfType = WordBank.wordDictionary[template[i]];
             randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-            // sorry heigo
-            while (generatedWords.Contains(randomWord))
-            {
-                randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-            }
             generatedWords[i] = randomWord;
         }
 
@@ -38,10 +33,7 @@ public class WordGen : MonoBehaviour
                 //List<Word> wordsOfType = opponent.triggerDictionary[randomTriggerType];
                 List<Word> wordsOfType = opponent.triggerDictionary.ElementAt(Random.Range(0, opponent.triggerDictionary.Count)).Value;
                 randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-                // im sorry heigo
-                while (generatedWords.Contains(randomWord)) {
-                    randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-                }
+
                 generatedWords[i] = randomWord;
             }
 
@@ -50,10 +42,6 @@ public class WordGen : MonoBehaviour
                 WordType randomTriggerType = (WordType)Random.Range(0, 4);
                 List<Word> wordsOfType = WordBank.wordDictionary[randomTriggerType];
                 randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-                while (generatedWords.Contains(randomWord))
-                {
-                    randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-                }
                 generatedWords[i] = randomWord;
             }
 
@@ -65,10 +53,6 @@ public class WordGen : MonoBehaviour
                 WordType randomTriggerType = (WordType)Random.Range(0, 4);
                 List<Word> wordsOfType = WordBank.wordDictionary[randomTriggerType];
                 randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-                while (generatedWords.Contains(randomWord))
-                {
-                    randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
-                }
                 generatedWords[i] = randomWord;
             }
         }

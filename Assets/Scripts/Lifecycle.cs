@@ -18,23 +18,23 @@ public class Lifecycle : MonoBehaviour
     {
         this.isOpponentAliveFlag = true;
         this.isPlayerAliveFlag = true;
-        this.areOpponentsLeftFlag = false;
-        doTransition();
+        this.areOpponentsLeftFlag = true;
+        doTransition(State.START);
     }
 
-    public void doTransition()
+    public void doTransition(State expectedCurrent)
 	{
-        /*if(!expectedCurrent.Equals(currentState))
+        if(!expectedCurrent.Equals(currentState))
 		{
             Debug.LogWarning("Expected to be in state " + expectedCurrent.ToString() + " was in state " + currentState.ToString());
             return;
-		}*/
+		}
 
-        Debug.Log(++cycleCounter);
 
         switch (currentState)
 		{
             case State.START:
+                
                 raiseToPlayerTurnFromStart();
                 break;
                 
@@ -51,6 +51,7 @@ public class Lifecycle : MonoBehaviour
 				}
 				else
 				{
+                    raiseToNextOpponent();
 				}
                 break;
             case State.HURT_PLAYER:
@@ -115,7 +116,6 @@ public class Lifecycle : MonoBehaviour
         return isPlayerAliveFlag;
 	}
 
-
     private bool areOpponentsRemaining()
 	{
         return areOpponentsLeftFlag;
@@ -127,22 +127,22 @@ public class Lifecycle : MonoBehaviour
         Debug.Log("raiseToPlayerTurnFromStart");
         // TODO: transition anim
         this.currentState = State.PLAYER_TURN;
-
-        doTransition();
+        gameController.playerEnterScene();
     }
     private void raiseToPlayerTurnFromNewOpponent()
     {
         Debug.Log("raiseToPlayerTurnFromNewOpponent");
         this.currentState = State.PLAYER_TURN;
+        gameController.switchOpponentAnimal();
 
-        doTransition();
+        doTransition(State.PLAYER_TURN);
     }
     private void raiseToPlayerTurnFromPlayerHurt()
     {
         Debug.Log("raiseToPlayerTurnFromOpponentDamage");
         this.currentState = State.PLAYER_TURN;
         
-        doTransition();
+        doTransition(State.PLAYER_TURN);
     }
     private void raiseToDragAndSend() {
         Debug.Log("blyat");
@@ -154,40 +154,38 @@ public class Lifecycle : MonoBehaviour
         Debug.Log("hurtOpponent");
         this.currentState = State.HURT_OPPONENT;
         gameController.eventDoDamageToOpponent();
-
-        doTransition();
+        doTransition(State.HURT_OPPONENT);
     }
     private void raiseToOpponentTurn()
 	{
         Debug.Log("raiseToOpponentTurn");
 		this.currentState = State.OPPONENT_TURN;
 
-        doTransition();
+        doTransition(State.OPPONENT_TURN);
 	}
 	private void raiseToGetResponse() {
         Debug.Log("raiseToGetResponse");
 
         this.currentState = State.GET_RESPONSE;
         gameController.eventGetResponseFromOpponent();
-        doTransition();
+        doTransition(State.GET_RESPONSE);
     }
     private void raiseToPlayerHurt() {
         Debug.Log("raiseToPlayerHurt");
 
         this.currentState = State.HURT_PLAYER;
-        doTransition();
+        doTransition(State.HURT_PLAYER);
     }
     private void raiseToPlayerDeadEnd() {
         Debug.Log("raiseToPlayerDeadEnd");
 
         this.currentState = State.END_PLAYER_DEAD;
-        doTransition();
+        doTransition(State.END_PLAYER_DEAD);
     }
     private void raiseToNextOpponent() {
         Debug.Log("raiseToNextOpponent");
-
         this.currentState = State.NEXT_OPPONENT;
-        doTransition();
+        gameController.opponentExitScene();
     }
 
     private void raiseOpponentsAllDead()

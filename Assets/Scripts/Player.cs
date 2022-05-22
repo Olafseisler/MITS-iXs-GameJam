@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     
     [SerializeField] TMPro.TextMeshProUGUI responseText;
     [SerializeField] int health;
-
-
+    [SerializeField] public Animator anim;
+    [SerializeField] public GameController gameController;
 
     private void Start()
     {
@@ -31,5 +31,8 @@ public class Player : MonoBehaviour
         responseText.text = text;
     }
 
-
+    private void animationEnd()
+	{
+        gameController.playerEnterSceneEnded();
+	}
 }

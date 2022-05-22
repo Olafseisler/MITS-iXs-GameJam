@@ -2,14 +2,23 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class Opponent : MonoBehaviour
 {
     [SerializeField] int health;
+    [SerializeField] Image image;
     [SerializeField] GameController gameController;
     [SerializeField] Check_Sentence checkSentence;
     [SerializeField] TMPro.TextMeshProUGUI responseText;
+    [SerializeField] public Animator anim;
 
+    [SerializeField] Sprite pigImage;
+    [SerializeField] Sprite horseImage;
+
+    int pigHealth = 6;
+    int horseHealth = 12;
+   
 	private void Start()
 	{
         responseText.gameObject.SetActive(false);
@@ -119,6 +128,11 @@ public class Opponent : MonoBehaviour
 		}
 	}
 
+    public void startExitAnimation()
+	{
+        anim.SetTrigger("LeaveScene");
+    }
+
     private int getDamage(Word[] sentence)
 	{
         int grammarScore = 0;
@@ -142,4 +156,15 @@ public class Opponent : MonoBehaviour
         responseText.text = text;
 	}
 
+    private void animationEnd()
+	{
+        gameController.opponentLeaveSceneEnded();
+	}
+
+    public void switchAnimal()
+	{
+        health = horseHealth;
+        image.sprite = horseImage;
+        anim.SetTrigger("EnterScene");
+	}
 }

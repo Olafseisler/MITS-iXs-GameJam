@@ -16,12 +16,14 @@ public class Opponent : MonoBehaviour
     [SerializeField] Sprite pigImage;
     [SerializeField] Sprite horseImage;
 
-    int pigHealth = 6;
-    int horseHealth = 12;
+    static int pigHealth = 6;
+    static int horseHealth = 12;
+   
+
     List<string> ResponseList;
 
     private void Start()
-	{
+	  {
         responseText.gameObject.SetActive(false);
     }
 
@@ -139,9 +141,10 @@ public class Opponent : MonoBehaviour
 
     public void doDamage(Word[] sentence)
 	{
-        health -= 3; //getDamage(sentence);
+        health -= getDamage(sentence);
         if (health <= 0)
 		{
+            gameController.opponentsLeft--;
             gameController.eventOpponentDead();
 		}
 	}
@@ -157,7 +160,7 @@ public class Opponent : MonoBehaviour
         if (checkSentence.VerifySentence(new List<Word>(sentence)))
 		{
             grammarScore += 3;
-            grammarScore += TriggerCount(sentence);
+            //grammarScore += TriggerCount(sentence);
 		}
         Debug.Log("grammar: " + grammarScore);
         return grammarScore;
@@ -202,6 +205,5 @@ public class Opponent : MonoBehaviour
         health = horseHealth;
         image.sprite = horseImage;
         anim.SetTrigger("EnterScene");
-        
-	}
+  }
 }

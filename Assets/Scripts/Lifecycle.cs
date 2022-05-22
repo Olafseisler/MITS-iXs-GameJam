@@ -133,7 +133,6 @@ public class Lifecycle : MonoBehaviour
     {
         Debug.Log("raiseToPlayerTurnFromNewOpponent");
         this.currentState = State.PLAYER_TURN;
-        gameController.switchOpponentAnimal();
 
         doTransition(State.PLAYER_TURN);
     }
@@ -184,8 +183,8 @@ public class Lifecycle : MonoBehaviour
     }
     private void raiseToNextOpponent() {
         Debug.Log("raiseToNextOpponent");
-        gameController.eventCheckOpponentsLeft();
         this.currentState = State.NEXT_OPPONENT;
+        gameController.eventCheckOpponentsLeft();
         gameController.opponentExitScene();
     }
 

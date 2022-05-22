@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using System.IO;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class Opponent : MonoBehaviour
     [SerializeField] Sprite horseImage;
 
     static int pigHealth = 6;
-    static int horseHealth = 3;
+    static int horseHealth = 12;
    
 
     List<string> ResponseList;
@@ -198,9 +199,9 @@ public class Opponent : MonoBehaviour
 
     private void setOpponentResponseTextBox(string text)
 	{
-        responseText.gameObject.SetActive(true);
         responseText.text = text;
-	}
+        StartCoroutine("handleTextBox");
+    }
 
     private void animationEnd()
 	{
@@ -213,5 +214,13 @@ public class Opponent : MonoBehaviour
         health = horseHealth;
         image.sprite = horseImage;
         anim.SetTrigger("EnterScene");
-  }
+    }
+
+    public IEnumerator handleTextBox()
+    {
+        yield return new WaitForSeconds(3.0f);
+        responseText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        responseText.gameObject.SetActive(false);
+    }
 }

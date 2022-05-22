@@ -17,22 +17,31 @@ public class Player : MonoBehaviour
 
     public void getResponseFromPlayer(Word[] words)
 	{
+        responseText.gameObject.SetActive(true);
         string response = string.Empty;
         foreach(Word word in words)
 		{
             response += word.WordText + " ";
 		}
         setOpponentResponseTextBox(response);
+
 	}
 
     private void setOpponentResponseTextBox(string text)
     {
         responseText.gameObject.SetActive(true);
         responseText.text = text;
+        StartCoroutine("deactivateTextBox");
     }
 
     private void animationEnd()
 	{
         gameController.playerEnterSceneEnded();
 	}
+
+    public IEnumerator deactivateTextBox()
+	{
+        yield return new WaitForSeconds(3.0f);
+        responseText.gameObject.SetActive(false);
+    }
 }

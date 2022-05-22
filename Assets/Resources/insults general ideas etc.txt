@@ -12,7 +12,7 @@ You're a hoser.
 
 ***horse/donkey***
 N jackass:jackasses
-N ass-hat:asshats
+N ass-hat:ass-hats
 N hippo:hippos
 N mule:mules
 N haystack:haystacks
@@ -27,7 +27,6 @@ A harness
 A half-assed
 V races ahead like:race ahead like
 V bucks up:buck up
-V passes the buck to:pass the buck to
 V goes haywire:go haywire	
 
 
@@ -73,6 +72,8 @@ V broods over:brood over
 V hen-pecks:henpeck
 V lays to rest:lay to rest
 
+----------------------------------------------------------------------------------
+max 17 characters per phrase
 ----------------------------------------------------------------------------------
 
 ***Shabbaroon: “An ill-dressed shabby fellow; also a mean-spirited person.”

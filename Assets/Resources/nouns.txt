@@ -55,6 +55,7 @@ French hornist:French hornists
 embezzler:embezzlers
 badger:badgers
 deviant:deviants
+hop:hops
 compost:root vegetables
 bug:bugs
 pancake:pancakes

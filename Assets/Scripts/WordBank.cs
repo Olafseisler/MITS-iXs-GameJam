@@ -82,7 +82,7 @@ public class WordBank : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Awake()
+    public WordBank()
     {
         wordDictionary = new Dictionary<WordType, List<Word>>()
         {

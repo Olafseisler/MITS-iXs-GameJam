@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WordButton : MonoBehaviour
 {
+	[SerializeField] public AudioSource buttonSound;
 	public Word word { get; set; }
 	[SerializeField] TMPro.TextMeshProUGUI buttonText;
 
@@ -20,5 +21,9 @@ public class WordButton : MonoBehaviour
 		this.parentContainer.sendWordToInsult(this);
 	}
 
+	public void playThisSoundEffect()
+    {
+		buttonSound.Play();
+    }
 	
 }

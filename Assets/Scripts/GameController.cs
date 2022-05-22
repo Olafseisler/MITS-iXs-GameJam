@@ -42,18 +42,46 @@ public class GameController : MonoBehaviour
     public void eventOpponentDead()
 	{
         lifecycle.isOpponentAliveFlag = false;
-	}
+    }
 
     public void allSlotsFull()
 	{
         randomWordsContainer.removeOldWords();
-        lifecycle.doTransition();
+        lifecycle.doTransition(State.DRAG_AND_SEND);
     }
 
+    public void opponentExitScene()
+	{
+        opponent.startExitAnimation();
+    }
+
+    public void playerEnterScene()
+	{
+        player.anim.SetTrigger("EnterScene");
+	}
+
+    public void playerEnterSceneEnded()
+    {
+        lifecycle.doTransition(State.PLAYER_TURN);
+    }
+
+    public void opponentEnterScene()
+	{
+        opponent.anim.SetTrigger("EnterScene");
+    }
+
+    public void opponentLeaveSceneEnded()
+    {
+        lifecycle.doTransition(State.NEXT_OPPONENT);
+    }
 
     public void sendWordToInsultContainer(Word word)
 	{
         this.insultContainer.addToWordToInsult(word);
 	}
 
+    public void switchOpponentAnimal()
+	{
+        opponent.switchAnimal();
+	}
 }

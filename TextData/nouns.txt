@@ -6,7 +6,7 @@ dingbat:dingbats
 smellfungus:smellfungi
 saddle-goose:saddle-geese
 moon-calf:moon-calves
-lubberwort: lubberworts
+lubberwort:lubberworts
 fopdoodle:flopdoodles
 bacterium:bacteria
 stampcrab:stampcrabs
@@ -62,3 +62,8 @@ bug:bugs
 pancake:pancakes
 grave robber:grave robbers
 eye:eyes
+eyeball:eyeballs
+dream:dreams
+dragon:dragons
+baka:bakas
+impostor:impostors

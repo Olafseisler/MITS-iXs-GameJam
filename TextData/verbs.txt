@@ -49,3 +49,4 @@ dampens:dampen
 appears to be:appear to be
 spoils:spoil
 barges in like:barge in like
+sink:sinking

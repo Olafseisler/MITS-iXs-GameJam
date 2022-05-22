@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] public Animator anim;
     [SerializeField] public GameController gameController;
+    [SerializeField] public Sprite winningSprite;
+
 
     private void Start()
     {

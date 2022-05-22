@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Lifecycle lifecycle;
 	[SerializeField] GameObject wordbuttonPrefab;
     [SerializeField] WordBank wordBank;
+    [SerializeField] Image fadePane;
+    [SerializeField] float fadeSpeed = 1;
 	Word[] generatedWords;
     [SerializeField] public int opponentsLeft = 2;
 
@@ -83,6 +86,12 @@ public class GameController : MonoBehaviour
 	{
         player.anim.SetTrigger("GameEnd");
 	}
+
+    public void playerWinAnim()
+	{
+        player.anim.SetTrigger("Win");
+	}
+
     public void opponentEnterScene()
 	{
         if (opponentsLeft > 0)
@@ -110,4 +119,34 @@ public class GameController : MonoBehaviour
 	{
         opponent.switchAnimal();
 	}
+
+    public void startFade()
+	{
+        StartCoroutine("Fade");
+        player.anim.SetTrigger("Win");
+    }
+
+    IEnumerator Fade()
+    {
+        fadePane.gameObject.SetActive(true);
+        float targetAlpha = 1;
+        while (fadePane.color.a != targetAlpha)
+        {
+            var newAlpha = Mathf.MoveTowards(fadePane.color.a, targetAlpha, fadeSpeed * Time.deltaTime);
+            fadePane.color = new Color(fadePane.color.r, fadePane.color.g, fadePane.color.b, newAlpha);
+            yield return null;
+        }
+
+        targetAlpha = 0;
+
+        while (fadePane.color.a != targetAlpha)
+        {
+            var newAlpha = Mathf.MoveTowards(fadePane.color.a, targetAlpha, fadeSpeed * Time.deltaTime);
+            fadePane.color = new Color(fadePane.color.r, fadePane.color.g, fadePane.color.b, newAlpha);
+            yield return null;
+        }
+        fadePane.gameObject.SetActive(false);
+        player.anim.enabled = false;
+        player.GetComponent<Image>().sprite = player.winningSprite;
+    }
 }

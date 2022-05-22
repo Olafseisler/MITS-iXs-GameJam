@@ -191,6 +191,7 @@ public class Lifecycle : MonoBehaviour
     private void raiseOpponentsAllDead()
 	{
         gameController.playerLeaveAnim();
+        gameController.startFade();
         Debug.Log("Reached End! Game Over!");
 	}
 

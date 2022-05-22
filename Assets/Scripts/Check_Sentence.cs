@@ -15,7 +15,6 @@ public class Check_Sentence : MonoBehaviour
                     {
                         break;
                     }
-
                     // if the last word is correct, so is the entire sentence
                     if (i == sentence.Count -1 ) {
                         return true;

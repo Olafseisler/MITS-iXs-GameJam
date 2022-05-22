@@ -10,9 +10,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Lifecycle lifecycle;
 	[SerializeField] GameObject wordbuttonPrefab;
-
+    [SerializeField] WordBank wordBank;
 	Word[] generatedWords;
-    int opponentsLeft = 2;
+    [SerializeField] public int opponentsLeft = 2;
 
 	// Start is called before the first frame update
 	void Start()
@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     public void genererateRandomWords()
 	{
-        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords();
+        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords(wordBank, opponent);
         
 	}
 
@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
     public void opponentExitScene()
 	{
         opponent.startExitAnimation();
+
     }
 
     public void playerEnterScene()
@@ -75,12 +76,20 @@ public class GameController : MonoBehaviour
 
     public void opponentEnterScene()
 	{
-        opponent.anim.SetTrigger("EnterScene");
+        if (opponentsLeft > 0)
+            opponent.anim.SetTrigger("EnterScene");
+
     }
 
     public void opponentLeaveSceneEnded()
     {
         lifecycle.doTransition(State.NEXT_OPPONENT);
+        if (opponentsLeft > 0){ 
+       
+            switchOpponentAnimal(); 
+            lifecycle.isOpponentAliveFlag = true;
+        }
+
     }
 
     public void sendWordToInsultContainer(Word word)
@@ -91,6 +100,5 @@ public class GameController : MonoBehaviour
     public void switchOpponentAnimal()
 	{
         opponent.switchAnimal();
-        opponentsLeft--;
 	}
 }

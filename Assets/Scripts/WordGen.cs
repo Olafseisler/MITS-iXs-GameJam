@@ -10,32 +10,39 @@ public class WordGen : MonoBehaviour
     [SerializeField] bool testMode = false;
 
 
-    public Word[] GenerateWords(Dictionary<WordType, List<Word>> triggerDictionary = null)
+    public Word[] GenerateWords(Opponent opponent)
     {
         int templateIndex = Random.Range(0, WordBank.SentenceTemplates.Length);
+        Word randomWord;
         WordType[] template = WordBank.SentenceTemplates[templateIndex];
         Word[] generatedWords = new Word[WordCount];
         for(int i = 0; i < template.Length; i++)
         { 
             List<Word> wordsOfType = WordBank.wordDictionary[template[i]];
-            generatedWords[i] = wordsOfType[Random.Range(0, wordsOfType.Count)];
+            randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
+            generatedWords[i] = randomWord;
         }
 
-        if (triggerDictionary != null)
+        if (opponent.triggerDictionary != null)
         {
+            Debug.Log("Trigger dict is not null");
             int amountOfTriggers = Random.Range(1, 3);
             for (int i = template.Length; i < template.Length + amountOfTriggers; i++)
             {
-                WordType randomTriggerType = (WordType)Random.Range(0, 4);
-                List<Word> wordsOfType = WordBank.wordDictionary[randomTriggerType];
-                generatedWords[i] = wordsOfType[Random.Range(0, wordsOfType.Count)];
+                //WordType randomTriggerType = (WordType)Random.Range(0, 4);
+                //List<Word> wordsOfType = opponent.triggerDictionary[randomTriggerType];
+                List<Word> wordsOfType = opponent.triggerDictionary.ElementAt(Random.Range(0, opponent.triggerDictionary.Count)).Value;
+                randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
+
+                generatedWords[i] = randomWord;
             }
 
             for (int i = template.Length + amountOfTriggers; i < generatedWords.Length; i++)
             {
                 WordType randomTriggerType = (WordType)Random.Range(0, 4);
                 List<Word> wordsOfType = WordBank.wordDictionary[randomTriggerType];
-                generatedWords[i] = wordsOfType[Random.Range(0, wordsOfType.Count)];
+                randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
+                generatedWords[i] = randomWord;
             }
 
         }
@@ -45,7 +52,8 @@ public class WordGen : MonoBehaviour
             {
                 WordType randomTriggerType = (WordType)Random.Range(0, 4);
                 List<Word> wordsOfType = WordBank.wordDictionary[randomTriggerType];
-                generatedWords[i] = wordsOfType[Random.Range(0, wordsOfType.Count)];
+                randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
+                generatedWords[i] = randomWord;
             }
         }
 
@@ -59,7 +67,7 @@ public class WordGen : MonoBehaviour
 		{
 			return;
 		}
-        Word[] words = GenerateWords();
+        Word[] words = GenerateWords(new Opponent());
 		foreach (Word word in words)
 		{
 			Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);

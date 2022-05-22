@@ -30,8 +30,6 @@ public class InsultContainer : MonoBehaviour
 		}
 	}
 
-
-
     public Word[] getWords()
 	{
         Word[] words = new Word[5];

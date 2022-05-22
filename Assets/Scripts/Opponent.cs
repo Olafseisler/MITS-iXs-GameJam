@@ -19,8 +19,11 @@ public class Opponent : MonoBehaviour
     static int pigHealth = 6;
     static int horseHealth = 12;
    
-	private void Start()
-	{
+
+    List<string> ResponseList;
+
+    private void Start()
+	  {
         responseText.gameObject.SetActive(false);
     }
 
@@ -32,14 +35,16 @@ public class Opponent : MonoBehaviour
         { WordType.Conjunction, new List<Word>() },
     };
 
-    public Opponent(string character)
+    public Opponent()
     {
-            ReadTriggers(character);
+        ResponseList = ReadResponses();
+        ReadTriggers("pig");
     }
 
     void ReadTriggers(string character)
     {
         WordType wordType;
+        List<WordType> removeList = new();
         string plural = "";
         string path = Path.ChangeExtension(Path.Combine("Assets/Resources/Opponents", character), ".txt");
         foreach (string line in File.ReadLines(path))
@@ -96,6 +101,21 @@ public class Opponent : MonoBehaviour
                     }
             }
         }
+
+
+        // remove empty keys
+        foreach (KeyValuePair<WordType, List<Word>> entry in triggerDictionary)
+        {
+            if (entry.Value.Count == 0)
+            {
+                removeList.Add(entry.Key);
+            }
+        }
+        foreach (WordType key in removeList)
+        {
+            triggerDictionary.Remove(key);
+        }
+
     }
 
     // check how many triggers a sentence contains (max two)
@@ -142,14 +162,31 @@ public class Opponent : MonoBehaviour
             grammarScore += 3;
             //grammarScore += TriggerCount(sentence);
 		}
+        Debug.Log("grammar: " + grammarScore);
         return grammarScore;
 	}
 
-    public void getResponseFromOpponent()
-	{
-        setOpponentResponseTextBox("Jobi oled rsk");
-
+    static List<string> ReadResponses()
+    {
+        List<string> responses = new();
+        foreach (string line in File.ReadLines("Assets/Resources/Opponents/responses.txt"))
+        {
+            string item = line.Trim();
+            if (item.Length > 0)
+            {
+                responses.Add(item);
+            }
+        }
+        return responses;
     }
+    public void getResponseFromOpponent()
+    {
+        int responseIndex = Random.Range(0, ResponseList.Count);
+        Debug.Log("current response is " + ResponseList[responseIndex]);
+        setOpponentResponseTextBox(ResponseList[responseIndex]);
+        //ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
+    }
+
 
     private void setOpponentResponseTextBox(string text)
 	{
@@ -164,8 +201,9 @@ public class Opponent : MonoBehaviour
 
     public void switchAnimal()
 	{
+        ReadTriggers("donkey");
         health = horseHealth;
         image.sprite = horseImage;
         anim.SetTrigger("EnterScene");
-    }
+  }
 }

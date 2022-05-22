@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Lifecycle lifecycle;
 	[SerializeField] GameObject wordbuttonPrefab;
-
+    [SerializeField] WordBank wordBank;
 	Word[] generatedWords;
     int opponentsLeft = 2;
 
@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     public void genererateRandomWords()
 	{
-        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords();
+        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords(wordBank, opponent);
         
 	}
 

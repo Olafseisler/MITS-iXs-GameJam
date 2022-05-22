@@ -10,9 +10,9 @@ public class WordGen : MonoBehaviour
     [SerializeField] bool testMode = false;
 
 
-    public Word[] GenerateWords(Dictionary<WordType, List<Word>> triggerDictionary = null)
+    public Word[] GenerateWords(WordBank wordBank, Opponent opponent)
     {
-        int templateIndex = Random.Range(0, WordBank.SentenceTemplates.Length);
+        int templateIndex = Random.Range(0, WordBank.SentenceTemplates.Length); 
         WordType[] template = WordBank.SentenceTemplates[templateIndex];
         Word[] generatedWords = new Word[WordCount];
         for(int i = 0; i < template.Length; i++)
@@ -21,13 +21,15 @@ public class WordGen : MonoBehaviour
             generatedWords[i] = wordsOfType[Random.Range(0, wordsOfType.Count)];
         }
 
-        if (triggerDictionary != null)
+        if (opponent.triggerDictionary != null)
         {
+            Debug.Log("Trigger dict is not null");
             int amountOfTriggers = Random.Range(1, 3);
             for (int i = template.Length; i < template.Length + amountOfTriggers; i++)
             {
-                WordType randomTriggerType = (WordType)Random.Range(0, 4);
-                List<Word> wordsOfType = WordBank.wordDictionary[randomTriggerType];
+                //WordType randomTriggerType = (WordType)Random.Range(0, 4);
+                //List<Word> wordsOfType = opponent.triggerDictionary[randomTriggerType];
+                List<Word> wordsOfType = opponent.triggerDictionary.ElementAt(Random.Range(0, opponent.triggerDictionary.Count)).Value;
                 generatedWords[i] = wordsOfType[Random.Range(0, wordsOfType.Count)];
             }
 
@@ -59,7 +61,7 @@ public class WordGen : MonoBehaviour
 		{
 			return;
 		}
-        Word[] words = GenerateWords();
+        Word[] words = GenerateWords(new WordBank(), new Opponent());
 		foreach (Word word in words)
 		{
 			Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);

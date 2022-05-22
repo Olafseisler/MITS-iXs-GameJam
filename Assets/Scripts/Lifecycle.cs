@@ -184,6 +184,7 @@ public class Lifecycle : MonoBehaviour
     }
     private void raiseToNextOpponent() {
         Debug.Log("raiseToNextOpponent");
+        gameController.eventCheckOpponentsLeft();
         this.currentState = State.NEXT_OPPONENT;
         gameController.opponentExitScene();
     }

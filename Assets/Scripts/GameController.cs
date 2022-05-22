@@ -9,11 +9,13 @@ public class GameController : MonoBehaviour
     [SerializeField] Opponent opponent;
     [SerializeField] Player player;
     [SerializeField] Lifecycle lifecycle;
-    Word[] generatedWords;
-    [SerializeField] GameObject wordbuttonPrefab;
-    
-    // Start is called before the first frame update
-    void Start()
+	[SerializeField] GameObject wordbuttonPrefab;
+
+	Word[] generatedWords;
+    int opponentsLeft = 2;
+
+	// Start is called before the first frame update
+	void Start()
     {
         this.insultContainer.gameController = this;
         randomWordsContainer.gameController = this;
@@ -42,7 +44,13 @@ public class GameController : MonoBehaviour
     public void eventOpponentDead()
 	{
         lifecycle.isOpponentAliveFlag = false;
+
     }
+
+    public void eventCheckOpponentsLeft()
+	{
+        lifecycle.areOpponentsLeftFlag = opponentsLeft > 0; 
+	}
 
     public void allSlotsFull()
 	{
@@ -83,5 +91,6 @@ public class GameController : MonoBehaviour
     public void switchOpponentAnimal()
 	{
         opponent.switchAnimal();
+        opponentsLeft--;
 	}
 }

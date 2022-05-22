@@ -18,7 +18,7 @@ public class Opponent : MonoBehaviour
     [SerializeField] Sprite horseImage;
 
     static int pigHealth = 3;
-    static int horseHealth = 8;
+    static int horseHealth = 3;
    
 
     List<string> ResponseList;

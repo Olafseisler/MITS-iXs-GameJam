@@ -1,0 +1,64 @@
+walloper:wallopers
+grumbletonian:grumbletonians
+whiffle-whaffel: whaffles
+ratbag:ratbags
+dingbat:dingbats
+smellfungus:smellfungi
+saddle-goose:saddle-geese
+moon-calf:moon-calves
+lubberwort: lubberworts
+fopdoodle:flopdoodles
+bacterium:bacteria
+stampcrab:stampcrabs
+shabbaroon:shabbarooms
+cabbage:cabbages
+funyarinpa:funyarinpas
+your mom:your horses
+your nostril:your pinkies
+your hat:your panties
+your dog:your dogs
+your toe:your toes
+your face:your feet
+your bottom:your earsies
+your hair:your hairs
+your wig:your wigs
+your spine:your kidneys
+your shovel:your nails
+your ancestor:your ancestors
+your eyebrow:your eyebrows
+headstone:headstones
+roller-coaster:roller-coasters
+land-pirate:land-pirates
+frog:frogs
+tomcat:tomcats
+abomination:abominations
+poodle:poodles
+executioner:executioners
+cannibal:cannibals
+turtle:turtles
+snail:snails
+duck:ducks
+earwig:earwigs
+pineapple:pineapples
+elephant:elephants
+mite:mites
+tuba:tubas
+cannibal:cannibals
+kitchen table:kitchen tables
+flute:flutes
+sock:socks
+elderberry:elderberries
+hamster:hamsters
+earthworm:earthworms
+accordionist:accordionists
+bassoonist:bassoonists
+French hornist:French hornists
+embezzler:embezzlers
+badger:badgers
+deviant:deviants
+hop:hops
+compost:root vegetables
+bug:bugs
+pancake:pancakes
+grave robber:grave robbers
+eye:eyes

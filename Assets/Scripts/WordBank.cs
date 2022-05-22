@@ -86,13 +86,13 @@ public class WordBank : MonoBehaviour
     {
         wordDictionary = new Dictionary<WordType, List<Word>>()
         {
-            {WordType.Verb, ReadWords("Assets/Resources/verbs.txt", WordType.Verb) },
-            {WordType.Noun,  ReadWords("Assets/Resources/nouns.txt", WordType.Noun) },
-            {WordType.Adjective,  ReadWords("Assets/Resources/adjectives.txt", WordType.Adjective) },
-            {WordType.Subjective,  ReadWords("Assets/Resources/subjectives.txt", WordType.Subjective) },
-            {WordType.Conjunction,  ReadWords("Assets/Resources/conjunctions.txt", WordType.Conjunction) },
+            {WordType.Verb, ReadWords("TextData/verbs.txt", WordType.Verb) },
+            {WordType.Noun,  ReadWords("TextData/nouns.txt", WordType.Noun) },
+            {WordType.Adjective,  ReadWords("TextData/adjectives.txt", WordType.Adjective) },
+            {WordType.Subjective,  ReadWords("TextData/subjectives.txt", WordType.Subjective) },
+            {WordType.Conjunction,  ReadWords("TextData/conjunctions.txt", WordType.Conjunction) },
         };
-        SentenceTemplates = ReadTemplate("Assets/Resources/templates.txt");
+        SentenceTemplates = ReadTemplate("TextData/templates.txt");
         // print all as a test
         if (!testMode)
         {

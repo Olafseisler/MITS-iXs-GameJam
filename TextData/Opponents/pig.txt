@@ -1,0 +1,19 @@
+N:snoutband:snoutbands
+N:sow:sows
+N:oinker:oinkers
+N:glutton:gluttons
+N:warthog:warthogs
+N:face-stuffer:face-stuffers
+N:hogwash:hogworts
+A:pink-faced
+A:muddy
+A:hog-nosed
+A:porky
+A:omnivorous
+A:tasty
+A:stout-bodied
+V:squeals like:squeal like
+V:butchers:butcher
+V:hogties:hogtie
+V:sows:sow
+V:oinks like:oink like

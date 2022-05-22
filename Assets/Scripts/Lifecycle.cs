@@ -159,7 +159,7 @@ public class Lifecycle : MonoBehaviour
 	{
         Debug.Log("raiseToOpponentTurn");
 		this.currentState = State.OPPONENT_TURN;
-
+        gameController.playerTalkAnim();
         doTransition(State.OPPONENT_TURN);
 	}
 	private void raiseToGetResponse() {
@@ -190,6 +190,7 @@ public class Lifecycle : MonoBehaviour
 
     private void raiseOpponentsAllDead()
 	{
+        gameController.playerLeaveAnim();
         Debug.Log("Reached End! Game Over!");
 	}
 

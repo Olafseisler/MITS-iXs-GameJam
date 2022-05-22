@@ -57,6 +57,8 @@ public class WordGen : MonoBehaviour
             }
         }
 
+        generatedWords = new List<Word>(generatedWords).OrderBy(x => Random.value).ToArray();
+
         return generatedWords;
     }
 

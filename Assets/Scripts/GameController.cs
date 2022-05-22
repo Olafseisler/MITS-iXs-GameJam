@@ -74,6 +74,15 @@ public class GameController : MonoBehaviour
         lifecycle.doTransition(State.PLAYER_TURN);
     }
 
+    public void playerTalkAnim()
+	{
+        player.anim.SetTrigger("Talk");
+	}
+
+    public void playerLeaveAnim()
+	{
+        player.anim.SetTrigger("GameEnd");
+	}
     public void opponentEnterScene()
 	{
         if (opponentsLeft > 0)

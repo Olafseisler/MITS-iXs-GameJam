@@ -50,7 +50,6 @@ public class WordBank : MonoBehaviour
             o = 0;
             foreach (char type in line.Split(' ')[0])
             {
-                Debug.Log(type);
                 switch (type)
                 {
                     case 'V':

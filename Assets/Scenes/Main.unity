@@ -2545,8 +2545,9 @@ MonoBehaviour:
   checkSentence: {fileID: 561204564}
   responseText: {fileID: 1852472470}
   anim: {fileID: 1529108030}
-  pigImage: {fileID: 21300000, guid: 44a424592641d6344b521e1e83c25db0, type: 3}
-  horseImage: {fileID: 21300000, guid: a9b1d611a210d004887f526e2473f1ed, type: 3}
+  opponentsData:
+  - {fileID: 11400000, guid: 874640181ea171c4494ce7aceb3e9aed, type: 2}
+  - {fileID: 11400000, guid: b22c542fd872dc7419bed55084100c54, type: 2}
 --- !u!95 &1529108030
 Animator:
   serializedVersion: 4

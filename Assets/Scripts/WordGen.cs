@@ -12,6 +12,7 @@ public class WordGen : MonoBehaviour
 
     public Word[] GenerateWords(Opponent opponent)
     {
+        // Selects random words to add to the word bank based on given sentence template
         int templateIndex = Random.Range(0, WordBank.SentenceTemplates.Length);
         Word randomWord;
         WordType[] template = WordBank.SentenceTemplates[templateIndex];
@@ -23,6 +24,7 @@ public class WordGen : MonoBehaviour
             generatedWords[i] = randomWord;
         }
 
+        // Selects opponent-based trigger words
         if (opponent.triggerDictionary != null)
         {
             Debug.Log("Trigger dict is not null");

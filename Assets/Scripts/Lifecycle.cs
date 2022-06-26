@@ -187,7 +187,6 @@ public class Lifecycle : MonoBehaviour
         gameController.eventCheckOpponentsLeft();
         gameController.opponentExitScene();
     }
-
     private void raiseOpponentsAllDead()
 	{
         gameController.playerLeaveAnim();

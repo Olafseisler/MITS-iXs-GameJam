@@ -13,19 +13,15 @@ public class Opponent : MonoBehaviour
     [SerializeField] Check_Sentence checkSentence;
     [SerializeField] TMPro.TextMeshProUGUI responseText;
     [SerializeField] public Animator anim;
+    [SerializeField] OpponentBase[] opponentsData;
 
-    [SerializeField] Sprite pigImage;
-    [SerializeField] Sprite horseImage;
-
-    static int pigHealth = 3;
-    static int horseHealth = 3;
-   
-
+    int opponentIndex = 0;
     List<string> ResponseList;
 
     private void Start()
-	  {
+	{
         responseText.gameObject.SetActive(false);
+        health = opponentsData[0].health;
     }
 
     public Dictionary<WordType, List<Word>> triggerDictionary = new() {
@@ -41,7 +37,7 @@ public class Opponent : MonoBehaviour
         ResponseList = ReadResponses();
         ReadTriggers("pig");
     }
-
+    // Reads trigger words of specific character
     void ReadTriggers(string character)
     {
         triggerDictionary = new()
@@ -127,7 +123,7 @@ public class Opponent : MonoBehaviour
 
     }
 
-    // check how many triggers a sentence contains (max two)
+    // check how many triggers the constructed sentence contains (max two)
     public int TriggerCount(Word[] sentence)
     {
         int trigger_count = 0;
@@ -161,6 +157,7 @@ public class Opponent : MonoBehaviour
     public void startExitAnimation()
 	{
         anim.SetTrigger("LeaveScene");
+        image.sprite = opponentsData[opponentIndex].sadSprite;
     }
 
     private int getDamage(Word[] sentence)
@@ -196,7 +193,6 @@ public class Opponent : MonoBehaviour
         //ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
     }
 
-
     private void setOpponentResponseTextBox(string text)
 	{
         responseText.text = text;
@@ -210,9 +206,11 @@ public class Opponent : MonoBehaviour
 
     public void switchAnimal()
 	{
-        ReadTriggers("donkey");
-        health = horseHealth;
-        image.sprite = horseImage;
+        opponentIndex++;
+        opponentIndex = Mathf.Clamp(opponentIndex, 0, opponentsData.Length - 1);
+		ReadTriggers(opponentsData[opponentIndex].characterName);
+        health = opponentsData[opponentIndex].health;
+        image.sprite = opponentsData[opponentIndex].happySprite;
         anim.SetTrigger("EnterScene");
     }
 

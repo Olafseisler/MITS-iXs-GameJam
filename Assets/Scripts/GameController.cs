@@ -122,11 +122,11 @@ public class GameController : MonoBehaviour
 
     public void startFade()
 	{
-        StartCoroutine("Fade");
-        player.anim.SetTrigger("Win");
+        StartCoroutine("FadeIn");
+        player.anim.SetTrigger("GameEnd");
     }
 
-    IEnumerator Fade()
+    IEnumerator FadeIn()
     {
         fadePane.gameObject.SetActive(true);
         float targetAlpha = 1;
@@ -137,7 +137,12 @@ public class GameController : MonoBehaviour
             yield return null;
         }
 
-        targetAlpha = 0;
+        StartCoroutine("FadeOut");
+    }
+
+    public IEnumerator FadeOut()
+    { 
+        float targetAlpha = 0;
 
         while (fadePane.color.a != targetAlpha)
         {

@@ -10,7 +10,7 @@ public class Opponent : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] Image image;
     [SerializeField] GameController gameController;
-    [SerializeField] Check_Sentence checkSentence;
+    [SerializeField] CheckSentence checkSentence;
     [SerializeField] TMPro.TextMeshProUGUI responseText;
     [SerializeField] public Animator anim;
     [SerializeField] OpponentBase[] opponentsData;

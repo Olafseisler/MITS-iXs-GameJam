@@ -122,36 +122,31 @@ public class GameController : MonoBehaviour
 
     public void startFade()
 	{
-        StartCoroutine("FadeIn");
+        StartCoroutine("FadeInAndOut");
         player.anim.SetTrigger("GameEnd");
     }
 
-    IEnumerator FadeIn()
+    IEnumerator FadeInAndOut()
     {
         fadePane.gameObject.SetActive(true);
-        float targetAlpha = 1;
-        while (fadePane.color.a != targetAlpha)
+        // loop over 1 second
+        for (float i = 0; i <= 1; i += Time.deltaTime)
         {
-            var newAlpha = Mathf.MoveTowards(fadePane.color.a, targetAlpha, fadeSpeed * Time.deltaTime);
-            fadePane.color = new Color(fadePane.color.r, fadePane.color.g, fadePane.color.b, newAlpha);
+            // set color with i as alpha
+            fadePane.color = new Color(0, 0, 0, i);
             yield return null;
         }
 
-        StartCoroutine("FadeOut");
-    }
+        //Temp to Fade Out
+        yield return new WaitForSeconds(1);
 
-    public IEnumerator FadeOut()
-    { 
-        float targetAlpha = 0;
-
-        while (fadePane.color.a != targetAlpha)
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
         {
-            var newAlpha = Mathf.MoveTowards(fadePane.color.a, targetAlpha, fadeSpeed * Time.deltaTime);
-            fadePane.color = new Color(fadePane.color.r, fadePane.color.g, fadePane.color.b, newAlpha);
+            // set color with i as alpha
+            fadePane.color = new Color(0, 0, 0, i);
             yield return null;
         }
         fadePane.gameObject.SetActive(false);
-        player.anim.enabled = false;
-        player.GetComponent<Image>().sprite = player.winningSprite;
     }
 }

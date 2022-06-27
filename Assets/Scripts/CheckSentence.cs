@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Check_Sentence : MonoBehaviour
+public class CheckSentence : MonoBehaviour
 {
     // checks if the sentence matches a template
     public bool VerifySentence(List<Word> sentence)

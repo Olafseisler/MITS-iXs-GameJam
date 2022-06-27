@@ -147,6 +147,7 @@ public class Opponent : MonoBehaviour
     public void doDamage(Word[] sentence)
 	{
         health -= getDamage(sentence);
+        Debug.Log("Sentence score: " + getDamage(sentence));
         if (health <= 0)
 		{
             gameController.opponentsLeft--;
@@ -204,6 +205,7 @@ public class Opponent : MonoBehaviour
         gameController.opponentLeaveSceneEnded();
 	}
 
+    // Switches to next opponent
     public void switchAnimal()
 	{
         opponentIndex++;
@@ -214,6 +216,7 @@ public class Opponent : MonoBehaviour
         anim.SetTrigger("EnterScene");
     }
 
+    // Activates and deactivates text box
     public IEnumerator handleTextBox()
     {
         yield return new WaitForSeconds(3.0f);

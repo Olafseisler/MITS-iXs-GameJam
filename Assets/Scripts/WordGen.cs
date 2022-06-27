@@ -17,10 +17,20 @@ public class WordGen : MonoBehaviour
         Word randomWord;
         WordType[] template = WordBank.SentenceTemplates[templateIndex];
         Word[] generatedWords = new Word[WordCount];
+        List<int> usedIndices = new();
         for(int i = 0; i < template.Length; i++)
-        { 
+        {
             List<Word> wordsOfType = WordBank.wordDictionary[template[i]];
-            randomWord = wordsOfType[Random.Range(0, wordsOfType.Count)];
+            int randomIndex = Random.Range(0, wordsOfType.Count);
+            for (int j = 0; j < 10; j++)
+			{
+                if (!usedIndices.Contains(randomIndex))
+                    break;
+                else 
+                    randomIndex = Random.Range(0, wordsOfType.Count);
+            }
+            randomWord = wordsOfType[randomIndex];
+            usedIndices.Add(randomIndex);
             generatedWords[i] = randomWord;
         }
 

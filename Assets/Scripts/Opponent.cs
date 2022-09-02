@@ -51,7 +51,7 @@ public class Opponent : MonoBehaviour
         WordType wordType;
         List<WordType> removeList = new();
         string plural = "";
-        string path = Path.ChangeExtension(Path.Combine("TextData/Opponents", character), ".txt");
+        string path = Path.ChangeExtension(Path.Combine(Application.streamingAssetsPath, "TextData/Opponents", character), ".txt");
         foreach (string line in File.ReadLines(path))
         {
             string[] data = line.Trim().Split(':');
@@ -176,7 +176,7 @@ public class Opponent : MonoBehaviour
     static List<string> ReadResponses()
     {
         List<string> responses = new();
-        foreach (string line in File.ReadLines("TextData/Opponents/responses.txt"))
+        foreach (string line in File.ReadLines(Path.Combine(Application.streamingAssetsPath, "TextData/Opponents/responses.txt")))
         {
             string item = line.Trim();
             if (item.Length > 0)

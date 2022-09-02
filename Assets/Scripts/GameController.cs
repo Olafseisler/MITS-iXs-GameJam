@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] WordBank wordBank;
     [SerializeField] PauseMenu pauseMenu;
     [SerializeField] Image fadePane;
+    [SerializeField] GameObject credits;
     [SerializeField] float fadeSpeed = 1;
 	Word[] generatedWords;
     [SerializeField] public int opponentsLeft = 2;
@@ -133,6 +135,7 @@ public class GameController : MonoBehaviour
 	{
         StartCoroutine("FadeInAndOut");
         player.anim.SetTrigger("GameEnd");
+
     }
 
     IEnumerator FadeInAndOut()
@@ -157,5 +160,42 @@ public class GameController : MonoBehaviour
             yield return null;
         }
         fadePane.gameObject.SetActive(false);
+        StartCoroutine("ShowCredits");
+    }
+
+    IEnumerator ShowCredits()
+    {
+        yield return new WaitForSeconds(4.0f);
+        fadePane.gameObject.SetActive(true);
+        // loop over 1 second
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            // set color with i as alpha
+            fadePane.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+
+        credits.SetActive(true);
+        //Temp to Fade Out
+        yield return new WaitForSeconds(1);
+
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            fadePane.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+        fadePane.gameObject.SetActive(false);
+        yield return new WaitForSeconds(8.0f);
+        fadePane.gameObject.SetActive(true);
+        // loop over 1 second
+        for (float i = 0; i <= 1; i += Time.deltaTime)
+        {
+            // set color with i as alpha
+            fadePane.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
+        SceneManager.LoadScene("MainMenu");
     }
 }

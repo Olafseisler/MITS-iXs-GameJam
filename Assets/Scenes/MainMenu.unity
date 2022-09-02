@@ -1587,6 +1587,48 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Run
+    clip: {fileID: 8300000, guid: 8774d1397ba59b3418a71edb7955690e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: horse_death
+    clip: {fileID: 8300000, guid: c79ff8211e609be41b230dce31752736, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: pig_death
+    clip: {fileID: 8300000, guid: 2e2b8600dcbe2164ebcbaf430f3fbe6a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: pig_boo
+    clip: {fileID: 8300000, guid: bfed36e915ea6ec4e828889ad14c761a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: horse_boo
+    clip: {fileID: 8300000, guid: 4aef86f27275c1e41a48299e14714348, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: pig_dmg
+    clip: {fileID: 8300000, guid: 8dc08185503b54e4a9159e3f2ce3de8c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: horse_dmg
+    clip: {fileID: 8300000, guid: 7af01848d5202df41b00df0d1110afe0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   playlist:
   - name: BGM
     clip: {fileID: 8300000, guid: 3c0b8d26ca211154a8e7a2e66f4ae352, type: 3}

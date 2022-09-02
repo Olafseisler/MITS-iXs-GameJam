@@ -12,6 +12,7 @@ public class Opponent : MonoBehaviour
     [SerializeField] GameController gameController;
     [SerializeField] CheckSentence checkSentence;
     [SerializeField] TMPro.TextMeshProUGUI responseText;
+    [SerializeField] TMPro.TextMeshProUGUI healthText;
     [SerializeField] public Animator anim;
     [SerializeField] OpponentBase[] opponentsData;
 
@@ -22,6 +23,7 @@ public class Opponent : MonoBehaviour
 	{
         responseText.gameObject.SetActive(false);
         health = opponentsData[0].health;
+        healthText.SetText(health.ToString());
         AudioManager.instance.PlaySound("Run");
     }
 
@@ -162,7 +164,8 @@ public class Opponent : MonoBehaviour
                 gameController.opponentsLeft--;
                 gameController.eventOpponentDead();
                 AudioManager.instance.PlaySound(opponentsData[opponentIndex].deathSound);
-		    }
+                healthText.SetText(":(");
+            }
             return;
         }
     }
@@ -224,6 +227,7 @@ public class Opponent : MonoBehaviour
         opponentIndex = Mathf.Clamp(opponentIndex, 0, opponentsData.Length - 1);
 		ReadTriggers(opponentsData[opponentIndex].characterName);
         health = opponentsData[opponentIndex].health;
+        healthText.SetText(health.ToString());
         image.sprite = opponentsData[opponentIndex].happySprite;
         anim.SetTrigger("EnterScene");
         AudioManager.instance.PlaySound("Run");
@@ -235,6 +239,7 @@ public class Opponent : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         if (opponentsData[opponentIndex].wasHurt)
         { // play hurt/boo sounds when opponent responds
+            healthText.SetText(health.ToString());
             image.sprite = opponentsData[opponentIndex].sadSprite;
             AudioManager.instance.PlaySound(opponentsData[opponentIndex].damageSound);
         }

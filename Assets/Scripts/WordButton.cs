@@ -16,9 +16,13 @@ public class WordButton : MonoBehaviour
 		buttonText.text = word.WordText;
 	}
 
-	public void sendSelfToInsult()
+    public void Awake()
+    {
+		buttonText.autoSizeTextContainer = true; // words will go over the box, but it's better than not seeing what it says
+    }
+    public void sendSelfToInsult()
 	{
-		this.parentContainer.sendWordToInsult(this);
+		parentContainer.sendWordToInsult(this);
 	}
 
 	public void playThisSoundEffect()

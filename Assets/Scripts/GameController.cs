@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Lifecycle lifecycle;
 	[SerializeField] GameObject wordbuttonPrefab;
     [SerializeField] WordBank wordBank;
+    [SerializeField] PauseMenu pauseMenu;
     [SerializeField] Image fadePane;
     [SerializeField] float fadeSpeed = 1;
 	Word[] generatedWords;
@@ -22,6 +23,14 @@ public class GameController : MonoBehaviour
     {
         this.insultContainer.gameController = this;
         randomWordsContainer.gameController = this;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+              pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+        }
     }
 
     public void genererateRandomWords()

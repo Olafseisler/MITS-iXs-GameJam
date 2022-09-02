@@ -12,5 +12,6 @@ public class OpponentBase : ScriptableObject
 	[SerializeField] public string damageSound;
 	[SerializeField] public Sprite happySprite;
 	[SerializeField] public Sprite sadSprite;
+	public bool wasHurt = false;
 }
 

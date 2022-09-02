@@ -147,12 +147,14 @@ public class Opponent : MonoBehaviour
 
     public void doDamage(Word[] sentence)
 	{
+        opponentsData[opponentIndex].wasHurt = false;
         int dmg = getDamage(sentence);
         if (dmg == 0)
         {
-            AudioManager.instance.PlaySound(opponentsData[opponentIndex].booSound);
+            return;
         }
         else {
+            opponentsData[opponentIndex].wasHurt = true;
             health -= dmg;
             Debug.Log("Sentence score: " + dmg);
             if (health <= 0)
@@ -161,10 +163,7 @@ public class Opponent : MonoBehaviour
                 gameController.eventOpponentDead();
                 AudioManager.instance.PlaySound(opponentsData[opponentIndex].deathSound);
 		    }
-            else
-            {
-                AudioManager.instance.PlaySound(opponentsData[opponentIndex].damageSound);
-            }
+            return;
         }
     }
 
@@ -227,15 +226,23 @@ public class Opponent : MonoBehaviour
         health = opponentsData[opponentIndex].health;
         image.sprite = opponentsData[opponentIndex].happySprite;
         anim.SetTrigger("EnterScene");
-        AudioManager.instance.PlaySound("Run"); // a bit too long
+        AudioManager.instance.PlaySound("Run");
     }
 
     // Activates and deactivates text box
     public IEnumerator handleTextBox()
     {
         yield return new WaitForSeconds(3.0f);
+        if (opponentsData[opponentIndex].wasHurt)
+        { // play hurt/boo sounds when opponent responds
+            image.sprite = opponentsData[opponentIndex].sadSprite;
+            AudioManager.instance.PlaySound(opponentsData[opponentIndex].damageSound);
+        }
+        else
+            AudioManager.instance.PlaySound(opponentsData[opponentIndex].booSound);
         responseText.gameObject.SetActive(true);
         yield return new WaitForSeconds(2.0f);
         responseText.gameObject.SetActive(false);
+        image.sprite = opponentsData[opponentIndex].happySprite;
     }
 }

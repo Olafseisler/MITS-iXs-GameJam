@@ -22,6 +22,7 @@ public class Opponent : MonoBehaviour
 	{
         responseText.gameObject.SetActive(false);
         health = opponentsData[0].health;
+        AudioManager.instance.PlaySound("Run");
     }
 
     public Dictionary<WordType, List<Word>> triggerDictionary = new() {
@@ -146,14 +147,26 @@ public class Opponent : MonoBehaviour
 
     public void doDamage(Word[] sentence)
 	{
-        health -= getDamage(sentence);
-        Debug.Log("Sentence score: " + getDamage(sentence));
-        if (health <= 0)
-		{
-            gameController.opponentsLeft--;
-            gameController.eventOpponentDead();
-		}
-	}
+        int dmg = getDamage(sentence);
+        if (dmg == 0)
+        {
+            AudioManager.instance.PlaySound(opponentsData[opponentIndex].booSound);
+        }
+        else {
+            health -= dmg;
+            Debug.Log("Sentence score: " + dmg);
+            if (health <= 0)
+		    {
+                gameController.opponentsLeft--;
+                gameController.eventOpponentDead();
+                AudioManager.instance.PlaySound(opponentsData[opponentIndex].deathSound);
+		    }
+            else
+            {
+                AudioManager.instance.PlaySound(opponentsData[opponentIndex].damageSound);
+            }
+        }
+    }
 
     public void startExitAnimation()
 	{
@@ -214,6 +227,7 @@ public class Opponent : MonoBehaviour
         health = opponentsData[opponentIndex].health;
         image.sprite = opponentsData[opponentIndex].happySprite;
         anim.SetTrigger("EnterScene");
+        AudioManager.instance.PlaySound("Run"); // a bit too long
     }
 
     // Activates and deactivates text box

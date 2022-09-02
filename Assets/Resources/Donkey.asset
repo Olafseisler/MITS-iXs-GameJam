@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Donkey
   m_EditorClassIdentifier: 
   characterName: donkey
-  health: 2
+  health: 6
+  deathSound: horse_death
+  booSound: horse_boo
+  damageSound: horse_dmg
   happySprite: {fileID: 21300000, guid: a9b1d611a210d004887f526e2473f1ed, type: 3}
   sadSprite: {fileID: 21300000, guid: e55f2fb1403e16849963d550aed3310e, type: 3}

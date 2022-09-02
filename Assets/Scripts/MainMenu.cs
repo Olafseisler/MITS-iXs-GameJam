@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public void Awake()
-    {
-        Application.runInBackground = true;
-    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Game");

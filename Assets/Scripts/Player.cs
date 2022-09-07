@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     
     [SerializeField] TMPro.TextMeshProUGUI responseText;
     [SerializeField] int health;
-    [SerializeField] public Animator anim;
-    [SerializeField] public GameController gameController;
-    [SerializeField] public Sprite winningSprite;
+    public Animator anim;
+    public GameController gameController;
+    public Sprite winningSprite;
 
 
     private void Start()
@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
         StartCoroutine("deactivateTextBox");
     }
 
+#pragma warning disable IDE0051 // Remove unused private members
     private void animationEnd()
+#pragma warning restore IDE0051 // Remove unused private members
 	{
         gameController.playerEnterSceneEnded();
 	}

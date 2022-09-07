@@ -16,14 +16,12 @@ public class GameController : MonoBehaviour
     [SerializeField] PauseMenu pauseMenu;
     [SerializeField] Image fadePane;
     [SerializeField] GameObject credits;
-    [SerializeField] float fadeSpeed = 1;
-	Word[] generatedWords;
-    [SerializeField] public int opponentsLeft = 2;
+    public int opponentsLeft = 2;
 
 	// Start is called before the first frame update
 	void Start()
     {
-        this.insultContainer.gameController = this;
+        insultContainer.gameController = this;
         randomWordsContainer.gameController = this;
     }
 
@@ -37,8 +35,7 @@ public class GameController : MonoBehaviour
 
     public void genererateRandomWords()
 	{
-        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords(wordBank, opponent);
-        
+        randomWordsContainer.GetComponent<RandomWordsContainer>().generateNewWords(opponent);
 	}
 
     public void eventGetResponseFromOpponent()
@@ -161,6 +158,7 @@ public class GameController : MonoBehaviour
         }
         fadePane.gameObject.SetActive(false);
         StartCoroutine("ShowCredits");
+        AudioManager.instance.PlaySound("drink");
     }
 
     IEnumerator ShowCredits()

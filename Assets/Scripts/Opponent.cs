@@ -184,7 +184,6 @@ public class Opponent : MonoBehaviour
             grammarScore += 3;
             grammarScore += TriggerCount(sentence);
 		}
-        Debug.Log("grammar: " + grammarScore);
         return grammarScore;
 	}
 
@@ -236,6 +235,7 @@ public class Opponent : MonoBehaviour
     // Activates and deactivates text box
     public IEnumerator handleTextBox()
     {
+        AudioManager.instance.PlaySound("Mumble");
         yield return new WaitForSeconds(3.0f);
         if (opponentsData[opponentIndex].wasHurt)
         { // play hurt/boo sounds when opponent responds

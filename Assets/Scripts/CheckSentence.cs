@@ -1,40 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class CheckSentence : MonoBehaviour
 {
     // checks if the sentence matches a template
     public bool VerifySentence(List<Word> sentence)
     {
+        WordType[] words = {sentence[0].wordType, sentence[1].wordType, sentence[2].wordType, sentence[3].wordType, sentence[4].wordType};
+        Debug.Log((words[0], words[1], words[2], words[3], words[4]));
         foreach (WordType[] template in WordBank.SentenceTemplates)
         {
-            for (int i = 0; i < sentence.Count; i++)
+            if (template.SequenceEqual(words))
             {
-                    // if sentence does not match template
-                    if (!(sentence[i].wordType == template[i]))
-                    {
-                        break;
-                    }
-                    // if the last word is correct, so is the entire sentence
-                    if (i == sentence.Count -1 ) {
-                        return true;
-                    }
+                Debug.Log("Valid sentence");
+                return true;
             }
         }
+        Debug.Log("Invalid sentence");
         return false;
     }
 
     void Start()
     {
         if (Application.isEditor) {
-            //Debug.Log("--CHECK SENTENCE DEBUG--");
+            Debug.Log("--CHECK SENTENCE DEBUG--");
             List<Word> sentence = new();
             sentence.Add(new Word("test", WordType.Noun));
             sentence.Add(new Word("test", WordType.Verb));
             sentence.Add(new Word("test", WordType.Adjective));
             sentence.Add(new Word("test", WordType.Adjective));
             sentence.Add(new Word("test", WordType.Noun));
-            //Debug.Log("Is sentence NVAAN valid: " + VerifySentence(sentence));
+            Debug.Log("Is sentence NVAAN valid: " + VerifySentence(sentence));
         }
     }
 }

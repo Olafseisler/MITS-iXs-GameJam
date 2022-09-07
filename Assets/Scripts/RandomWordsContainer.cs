@@ -27,10 +27,9 @@ public class RandomWordsContainer : MonoBehaviour
     }
 
 
-    public void generateNewWords(WordBank wordBank, Opponent opponent)
+    public void generateNewWords(Opponent opponent)
     {
         Word[] generatedWords = wordGen.GenerateWords(opponent);
-        Debug.Log(wordButtons.Length);
         for(int i = 0; i < generatedWords.Length; i++) 
 		{
 

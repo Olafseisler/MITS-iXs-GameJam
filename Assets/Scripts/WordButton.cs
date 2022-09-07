@@ -13,7 +13,7 @@ public class WordButton : MonoBehaviour
 	{
 		this.word = word;
 		buttonText.text = word.WordText;
-		buttonText.autoSizeTextContainer = true; // words will go over the box, but it's better than not seeing what it says
+		//buttonText.autoSizeTextContainer = true; // words will go over the box, but it's better than not seeing what it says
 
 	}
 
@@ -26,7 +26,6 @@ public class WordButton : MonoBehaviour
 	public void playThisSoundEffect()
     {
 		AudioManager.instance.PlaySound("ButtonClick");
-		Debug.Log("shoulda played sfx");
     }
 	
 }

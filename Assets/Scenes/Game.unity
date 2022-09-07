@@ -1401,7 +1401,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 155052461}
   fadePane: {fileID: 539633791}
   credits: {fileID: 69074216}
-  fadeSpeed: 0.3
   opponentsLeft: 2
 --- !u!4 &561204560
 Transform:
@@ -1611,8 +1610,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WordCount: 10
-  maxAmountOfType: 2
-  testMode: 0
 --- !u!114 &625428127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4780,6 +4777,18 @@ MonoBehaviour:
   - name: horse_dmg
     clip: {fileID: 8300000, guid: 7af01848d5202df41b00df0d1110afe0, type: 3}
     volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: drink
+    clip: {fileID: 8300000, guid: bd2d8f0a6cb2a7048a3dfcac7ffcbb8b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mumble
+    clip: {fileID: 8300000, guid: 78312a920adca54479961e9b2d5165d6, type: 3}
+    volume: 0.8
     pitch: 1
     source: {fileID: 0}
     loop: 0

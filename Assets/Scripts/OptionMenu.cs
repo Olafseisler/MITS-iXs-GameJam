@@ -15,14 +15,20 @@ public class OptionMenu : MonoBehaviour
     }
     public void updateMusicVolume()
     {
-        PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
-        AudioManager.instance.musicVolumeChanged();
+        if (AudioManager.instance != null)
+        {
+            PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
+            AudioManager.instance.musicVolumeChanged();
+        }
     }
 
     public void updateEffectsVolume()
     {
-        PlayerPrefs.SetFloat("EffectsVolume", effectsVolumeSlider.value);
-        AudioManager.instance.effectVolumeChanged();
+        if (AudioManager.instance != null)
+        {
+            PlayerPrefs.SetFloat("EffectsVolume", effectsVolumeSlider.value);
+            AudioManager.instance.effectVolumeChanged();
+        }
     }
 
 }

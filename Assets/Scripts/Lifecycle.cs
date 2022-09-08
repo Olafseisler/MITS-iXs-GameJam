@@ -85,7 +85,7 @@ public class Lifecycle : MonoBehaviour
 				}
                 break;
             default:
-                Debug.LogError("Unknow state");
+                Debug.LogError("Unknown state");
                 break;
         }
         
@@ -149,7 +149,7 @@ public class Lifecycle : MonoBehaviour
 
     }
     private void raiseToHurtOpponent() {
-        Debug.Log("hurtOpponent");
+        Debug.Log("raiseToHurtOpponent");
         currentState = State.HURT_OPPONENT;
         gameController.eventDoDamageToOpponent();
         doTransition(State.HURT_OPPONENT);

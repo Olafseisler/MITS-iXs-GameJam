@@ -120,21 +120,26 @@ public class AudioManager : MonoBehaviour
     // if the music volume change update all the audio sources
     public void musicVolumeChanged()
     {
-        foreach (Sound m in playlist)
-        {
-            mvol = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
-            m.source.volume = playlist[0].volume * mvol;
+        if (playlist[0].source != null) { 
+            foreach (Sound m in playlist)
+            {
+                mvol = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+                m.source.volume = playlist[0].volume * mvol;
+            }
         }
     }
 
     //if the effects volume changed update the audio sources
     public void effectVolumeChanged()
     {
-        evol = PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
-        foreach (Sound s in sounds)
+        if (sounds[0].source != null)
         {
-            s.source.volume = s.volume * evol;
+            evol = PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
+            foreach (Sound s in sounds)
+            {
+                s.source.volume = s.volume * evol;
+            }
+            sounds[0].source.Play(); // play an effect so user can hear effect volume
         }
-        sounds[0].source.Play(); // play an effect so user can her effect volume
     }
 }

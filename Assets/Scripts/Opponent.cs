@@ -203,7 +203,7 @@ public class Opponent : MonoBehaviour
     public void getResponseFromOpponent()
     {
         int responseIndex = Random.Range(0, ResponseList.Count);
-        Debug.Log("current response is " + ResponseList[responseIndex]);
+        //Debug.Log("current response is " + ResponseList[responseIndex]);
         setOpponentResponseTextBox(ResponseList[responseIndex]);
         //ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
     }

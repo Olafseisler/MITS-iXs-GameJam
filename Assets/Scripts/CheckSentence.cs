@@ -20,7 +20,7 @@ public class CheckSentence : MonoBehaviour
         return false;
     }
 
-    void Start()
+    /*void Start()
     {
         if (Application.isEditor) {
             Debug.Log("--CHECK SENTENCE DEBUG--");
@@ -32,5 +32,5 @@ public class CheckSentence : MonoBehaviour
             sentence.Add(new Word("test", WordType.Noun));
             Debug.Log("Is sentence NVAAN valid: " + VerifySentence(sentence));
         }
-    }
+    }*/
 }

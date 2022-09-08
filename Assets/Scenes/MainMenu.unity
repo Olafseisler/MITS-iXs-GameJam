@@ -1629,6 +1629,18 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: drink
+    clip: {fileID: 8300000, guid: bd2d8f0a6cb2a7048a3dfcac7ffcbb8b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mumble
+    clip: {fileID: 8300000, guid: 78312a920adca54479961e9b2d5165d6, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   playlist:
   - name: BGM
     clip: {fileID: 8300000, guid: 3c0b8d26ca211154a8e7a2e66f4ae352, type: 3}

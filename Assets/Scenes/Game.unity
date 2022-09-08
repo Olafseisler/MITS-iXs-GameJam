@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 64654603}
   - component: {fileID: 64654602}
   m_Layer: 5
-  m_Name: TopPanel
+  m_Name: amazing_nonuw_workaround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 16.132, y: 569.13}
-  m_SizeDelta: {x: 862.0015, y: 69.778}
+  m_AnchoredPosition: {x: 22.83, y: 653.9698}
+  m_SizeDelta: {x: 875.4, y: 239.4578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &64654602
 Animator:

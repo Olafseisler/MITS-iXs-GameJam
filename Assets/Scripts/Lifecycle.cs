@@ -11,14 +11,13 @@ public class Lifecycle : MonoBehaviour
     public bool isOpponentAliveFlag;
     public bool isPlayerAliveFlag;
     public bool areOpponentsLeftFlag;
-    private int cycleCounter = 0;
     
     // Start is called before the first frame update
     void Start()
     {
-        this.isOpponentAliveFlag = true;
-        this.isPlayerAliveFlag = true;
-        this.areOpponentsLeftFlag = true;
+        isOpponentAliveFlag = true;
+        isPlayerAliveFlag = true;
+        areOpponentsLeftFlag = true;
         doTransition(State.START);
     }
 
@@ -86,7 +85,7 @@ public class Lifecycle : MonoBehaviour
 				}
                 break;
             default:
-                Debug.LogError("Unknow state");
+                Debug.LogError("Unknown state");
                 break;
         }
         
@@ -126,64 +125,64 @@ public class Lifecycle : MonoBehaviour
     private void raiseToPlayerTurnFromStart() {
         Debug.Log("raiseToPlayerTurnFromStart");
         // TODO: transition anim
-        this.currentState = State.PLAYER_TURN;
+        currentState = State.PLAYER_TURN;
         gameController.playerEnterScene();
     }
     private void raiseToPlayerTurnFromNewOpponent()
     {
         Debug.Log("raiseToPlayerTurnFromNewOpponent");
-        this.currentState = State.PLAYER_TURN;
+        currentState = State.PLAYER_TURN;
 
         doTransition(State.PLAYER_TURN);
     }
     private void raiseToPlayerTurnFromPlayerHurt()
     {
         Debug.Log("raiseToPlayerTurnFromOpponentDamage");
-        this.currentState = State.PLAYER_TURN;
+        currentState = State.PLAYER_TURN;
         
         doTransition(State.PLAYER_TURN);
     }
     private void raiseToDragAndSend() {
-        Debug.Log("blyat");
+        Debug.Log("raiseToDragAndSend");
         gameController.genererateRandomWords();
-        this.currentState = State.DRAG_AND_SEND;
+        currentState = State.DRAG_AND_SEND;
 
     }
     private void raiseToHurtOpponent() {
-        Debug.Log("hurtOpponent");
-        this.currentState = State.HURT_OPPONENT;
+        Debug.Log("raiseToHurtOpponent");
+        currentState = State.HURT_OPPONENT;
         gameController.eventDoDamageToOpponent();
         doTransition(State.HURT_OPPONENT);
     }
     private void raiseToOpponentTurn()
 	{
         Debug.Log("raiseToOpponentTurn");
-		this.currentState = State.OPPONENT_TURN;
+		currentState = State.OPPONENT_TURN;
         gameController.playerTalkAnim();
         doTransition(State.OPPONENT_TURN);
 	}
 	private void raiseToGetResponse() {
         Debug.Log("raiseToGetResponse");
 
-        this.currentState = State.GET_RESPONSE;
+        currentState = State.GET_RESPONSE;
         gameController.eventGetResponseFromOpponent();
         doTransition(State.GET_RESPONSE);
     }
     private void raiseToPlayerHurt() {
         Debug.Log("raiseToPlayerHurt");
 
-        this.currentState = State.HURT_PLAYER;
+        currentState = State.HURT_PLAYER;
         doTransition(State.HURT_PLAYER);
     }
     private void raiseToPlayerDeadEnd() {
         Debug.Log("raiseToPlayerDeadEnd");
 
-        this.currentState = State.END_PLAYER_DEAD;
+        currentState = State.END_PLAYER_DEAD;
         doTransition(State.END_PLAYER_DEAD);
     }
     private void raiseToNextOpponent() {
         Debug.Log("raiseToNextOpponent");
-        this.currentState = State.NEXT_OPPONENT;
+        currentState = State.NEXT_OPPONENT;
         gameController.eventCheckOpponentsLeft();
         gameController.opponentExitScene();
     }

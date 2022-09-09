@@ -12,6 +12,7 @@ public class Opponent : MonoBehaviour
     [SerializeField] GameController gameController;
     [SerializeField] CheckSentence checkSentence;
     [SerializeField] TMPro.TextMeshProUGUI responseText;
+    [SerializeField] TMPro.TextMeshProUGUI healthText;
     [SerializeField] public Animator anim;
     [SerializeField] OpponentBase[] opponentsData;
 
@@ -22,6 +23,8 @@ public class Opponent : MonoBehaviour
 	{
         responseText.gameObject.SetActive(false);
         health = opponentsData[0].health;
+        healthText.SetText(health.ToString());
+        AudioManager.instance.PlaySound("Run");
     }
 
     public Dictionary<WordType, List<Word>> triggerDictionary = new() {
@@ -51,7 +54,7 @@ public class Opponent : MonoBehaviour
         WordType wordType;
         List<WordType> removeList = new();
         string plural = "";
-        string path = Path.ChangeExtension(Path.Combine("TextData/Opponents", character), ".txt");
+        string path = Path.ChangeExtension(Path.Combine(Application.streamingAssetsPath, "TextData/Opponents", character), ".txt");
         foreach (string line in File.ReadLines(path))
         {
             string[] data = line.Trim().Split(':');
@@ -146,14 +149,26 @@ public class Opponent : MonoBehaviour
 
     public void doDamage(Word[] sentence)
 	{
-        health -= getDamage(sentence);
-        Debug.Log("Sentence score: " + getDamage(sentence));
-        if (health <= 0)
-		{
-            gameController.opponentsLeft--;
-            gameController.eventOpponentDead();
-		}
-	}
+        opponentsData[opponentIndex].wasHurt = false;
+        int dmg = getDamage(sentence);
+        if (dmg == 0)
+        {
+            return;
+        }
+        else {
+            opponentsData[opponentIndex].wasHurt = true;
+            health -= dmg;
+            Debug.Log("Sentence score: " + dmg);
+            if (health <= 0)
+		    {
+                gameController.opponentsLeft--;
+                gameController.eventOpponentDead();
+                AudioManager.instance.PlaySound(opponentsData[opponentIndex].deathSound);
+                healthText.SetText(":(");
+            }
+            return;
+        }
+    }
 
     public void startExitAnimation()
 	{
@@ -169,14 +184,13 @@ public class Opponent : MonoBehaviour
             grammarScore += 3;
             grammarScore += TriggerCount(sentence);
 		}
-        Debug.Log("grammar: " + grammarScore);
         return grammarScore;
 	}
 
     static List<string> ReadResponses()
     {
         List<string> responses = new();
-        foreach (string line in File.ReadLines("TextData/Opponents/responses.txt"))
+        foreach (string line in File.ReadLines(Path.Combine(Application.streamingAssetsPath, "TextData/Opponents/responses.txt")))
         {
             string item = line.Trim();
             if (item.Length > 0)
@@ -189,7 +203,7 @@ public class Opponent : MonoBehaviour
     public void getResponseFromOpponent()
     {
         int responseIndex = Random.Range(0, ResponseList.Count);
-        Debug.Log("current response is " + ResponseList[responseIndex]);
+        //Debug.Log("current response is " + ResponseList[responseIndex]);
         setOpponentResponseTextBox(ResponseList[responseIndex]);
         //ResponseList.RemoveAt(responseIndex); // remove item, so the responses won't repeat as much
     }
@@ -212,16 +226,28 @@ public class Opponent : MonoBehaviour
         opponentIndex = Mathf.Clamp(opponentIndex, 0, opponentsData.Length - 1);
 		ReadTriggers(opponentsData[opponentIndex].characterName);
         health = opponentsData[opponentIndex].health;
+        healthText.SetText(health.ToString());
         image.sprite = opponentsData[opponentIndex].happySprite;
         anim.SetTrigger("EnterScene");
+        AudioManager.instance.PlaySound("Run");
     }
 
     // Activates and deactivates text box
     public IEnumerator handleTextBox()
     {
+        AudioManager.instance.PlaySound("Mumble");
         yield return new WaitForSeconds(3.0f);
+        if (opponentsData[opponentIndex].wasHurt)
+        { // play hurt/boo sounds when opponent responds
+            healthText.SetText(health.ToString());
+            image.sprite = opponentsData[opponentIndex].sadSprite;
+            AudioManager.instance.PlaySound(opponentsData[opponentIndex].damageSound);
+        }
+        else
+            AudioManager.instance.PlaySound(opponentsData[opponentIndex].booSound);
         responseText.gameObject.SetActive(true);
         yield return new WaitForSeconds(2.0f);
         responseText.gameObject.SetActive(false);
+        image.sprite = opponentsData[opponentIndex].happySprite;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WordButton : MonoBehaviour
 {
-	[SerializeField] public AudioSource buttonSound;
 	public Word word { get; set; }
 	[SerializeField] TMPro.TextMeshProUGUI buttonText;
 
@@ -14,16 +13,19 @@ public class WordButton : MonoBehaviour
 	{
 		this.word = word;
 		buttonText.text = word.WordText;
+		//buttonText.autoSizeTextContainer = true; // words will go over the box, but it's better than not seeing what it says
+
 	}
 
-	public void sendSelfToInsult()
+    public void sendSelfToInsult()
 	{
-		this.parentContainer.sendWordToInsult(this);
+		parentContainer.sendWordToInsult(this);
+		playThisSoundEffect();
 	}
 
 	public void playThisSoundEffect()
     {
-		buttonSound.Play();
+		AudioManager.instance.PlaySound("ButtonClick");
     }
 	
 }

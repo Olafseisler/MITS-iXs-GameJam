@@ -6,8 +6,6 @@ public class WordGen : MonoBehaviour
 {
     // be careful when changing, it might break if there's not enough words
     [SerializeField] int WordCount = 10;
-    [SerializeField] int maxAmountOfType = 2;
-    [SerializeField] bool testMode = false;
 
 
     public Word[] GenerateWords(Opponent opponent)
@@ -37,7 +35,6 @@ public class WordGen : MonoBehaviour
         // Selects opponent-based trigger words
         if (opponent.triggerDictionary != null)
         {
-            Debug.Log("Trigger dict is not null");
             int amountOfTriggers = Random.Range(1, 3);
             for (int i = template.Length; i < template.Length + amountOfTriggers; i++)
             {
@@ -73,19 +70,5 @@ public class WordGen : MonoBehaviour
 
         return generatedWords;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-		if (!testMode)
-		{
-			return;
-		}
-        Word[] words = GenerateWords(new Opponent());
-		foreach (Word word in words)
-		{
-			Debug.Log(word.WordText + " and plural: " + word.WordTextPlural);
-		}
-	}
 
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class WordBank : MonoBehaviour
 {
     [SerializeField] bool testMode = false;
-
+    [SerializeField] public TextData textData;
     public static Dictionary<WordType, List<Word>> wordDictionary = new() {
         { WordType.Verb, new List<Word>() },
         { WordType.Noun, new List<Word>() },
@@ -15,11 +15,13 @@ public class WordBank : MonoBehaviour
     };
     public static WordType[][] SentenceTemplates { get; set; }
 
-    static List<Word> ReadWords(string path, WordType type)
+    public static WordBank instance;
+
+    static List<Word> ReadWords(string textData, WordType type)
     {
         List<Word> words = new();
         int i = 0;
-        foreach (string line in File.ReadLines(path))
+        foreach (string line in textData.Split("\n"))
         {
             string[] data = line.Trim().Split(':');
             if (data[0].Length > 0) {
@@ -38,14 +40,15 @@ public class WordBank : MonoBehaviour
         return words;
     }
 
-    static WordType[][] ReadTemplate(string path)
+    static WordType[][] ReadTemplate(string textData)
     {
         int i = 0;
         int o;
-        var lineCount = File.ReadLines(path).Count();
+        var lineCount = textData.Split("\n").Count();
         WordType[][] sentences = new WordType[lineCount][];
-        foreach (string line in File.ReadLines(path))
+        foreach (string temp in textData.Split("\n"))
         {
+            string line = temp.Trim();
             WordType[] words = new WordType[5];
             o = 0;
             foreach (char type in line.Split(' ')[0])
@@ -67,9 +70,11 @@ public class WordBank : MonoBehaviour
                     case 'C':
                         words[o] = WordType.Conjunction;
                         break;
+                    case ' ':
+                        break;
                     default:
                         // it should never get here
-                        Debug.LogError("Invalid type: " + type);
+                        Debug.LogWarning("Invalid type: " + type);
                         break;
                 }
                 o++;
@@ -81,17 +86,18 @@ public class WordBank : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public WordBank()
+    private void Awake()
     {
+        instance = this;
         wordDictionary = new Dictionary<WordType, List<Word>>()
         {
-            {WordType.Verb, ReadWords(Path.Combine(Application.streamingAssetsPath, "TextData/verbs.txt"), WordType.Verb) },
-            {WordType.Noun,  ReadWords(Path.Combine(Application.streamingAssetsPath, "TextData/nouns.txt"), WordType.Noun) },
-            {WordType.Adjective,  ReadWords(Path.Combine(Application.streamingAssetsPath, "TextData/adjectives.txt"), WordType.Adjective) },
-            {WordType.Subjective,  ReadWords(Path.Combine(Application.streamingAssetsPath, "TextData/subjectives.txt"), WordType.Subjective) },
-            {WordType.Conjunction,  ReadWords(Path.Combine(Application.streamingAssetsPath, "TextData/conjunctions.txt"), WordType.Conjunction) },
+            {WordType.Verb, ReadWords(textData.verbs, WordType.Verb) },
+            {WordType.Noun,  ReadWords(textData.nouns, WordType.Noun) },
+            {WordType.Adjective,  ReadWords(textData.adjectives, WordType.Adjective) },
+            {WordType.Subjective,  ReadWords(textData.subjectives, WordType.Subjective) },
+            {WordType.Conjunction,  ReadWords(textData.conjunctions, WordType.Conjunction) },
         };
-        SentenceTemplates = ReadTemplate(Path.Combine(Application.streamingAssetsPath, "TextData/templates.txt"));
+        SentenceTemplates = ReadTemplate(textData.templates);
         // print all as a test
         if (!testMode)
         {

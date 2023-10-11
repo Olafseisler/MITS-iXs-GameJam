@@ -1,0 +1,553 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2db1d0712b5bc245b2fbbdfd9290237, type: 3}
+  m_Name: TextData
+  m_EditorClassIdentifier: 
+  verbs: 'is:are
+
+    has:have
+
+    has done:have done
+
+    goes to:go to
+
+    drools:drool
+
+    emits:emit
+
+    digs
+    up:dig up
+
+    emerges from:emerge from
+
+    takes back:take back
+
+    swims
+    in:swim in
+
+    blabs like:blab like
+
+    roasts:roast
+
+    catches:catch
+
+    flies
+    like:fly like
+
+    smells like:smell like
+
+    sounds like:sound like
+
+    exorcises:exorcise
+
+    drags
+    in:drag in
+
+    hops:hop
+
+    shortens:shorten
+
+    discharges:discharge
+
+    breaks:break
+
+    slurps:slurp
+
+    trots
+    about:trot about
+
+    inhibits:inhibit
+
+    keeps:keep
+
+    gambles with:gamble
+    with
+
+    sings like:sing like
+
+    tastes like:taste like
+
+    harnesses:harness
+
+    exudes:exude
+
+    looks
+    like:look like
+
+    needs:need
+
+    melts down:melt down
+
+    embodies:embody
+
+    hovers
+    over:hover over
+
+    sours:sour
+
+    retains:retain
+
+    swallow:swallows
+
+    pretends:pretend
+
+    pops
+    up:pop up
+
+    dips into:dip into
+
+    fishes like:fish like
+
+    practices:practice
+
+    scavenges:scavenge
+
+    gets
+    down from:get down from
+
+    curdles:curdle
+
+    dampens:dampen
+
+    appears
+    to be:appear to be
+
+    spoils:spoil
+
+    barges in like:barge in like
+
+    sink:sinking'
+  nouns: 'walloper:wallopers
+
+    grumbletonian:grumbletonians
+
+    whiffle-whaffel:
+    whaffles
+
+    ratbag:ratbags
+
+    dingbat:dingbats
+
+    smellfungus:smellfungi
+
+    saddle-goose:saddle-geese
+
+    moon-calf:moon-calves
+
+    lubberwort:lubberworts
+
+    fopdoodle:flopdoodles
+
+    bacterium:bacteria
+
+    stampcrab:stampcrabs
+
+    shabbaroon:shabbarooms
+
+    cabbage:cabbages
+
+    funyarinpa:funyarinpas
+
+    your
+    mom:your horses
+
+    your nostril:your pinkies
+
+    your hat:your panties
+
+    your
+    dog:your dogs
+
+    your toe:your toes
+
+    your face:your feet
+
+    your bottom:your
+    earsies
+
+    your hair:your hairs
+
+    your wig:your wigs
+
+    your spine:your
+    kidneys
+
+    your shovel:your nails
+
+    your ancestor:your ancestors
+
+    your
+    eyebrow:your eyebrows
+
+    headstone:headstones
+
+    roller-coaster:roller-coasters
+
+    land-pirate:land-pirates
+
+    frog:frogs
+
+    tomcat:tomcats
+
+    abomination:abominations
+
+    poodle:poodles
+
+    executioner:executioners
+
+    cannibal:cannibals
+
+    turtle:turtles
+
+    snail:snails
+
+    duck:ducks
+
+    earwig:earwigs
+
+    pineapple:pineapples
+
+    elephant:elephants
+
+    mite:mites
+
+    tuba:tubas
+
+    cannibal:cannibals
+
+    kitchen
+    table:kitchen tables
+
+    flute:flutes
+
+    sock:socks
+
+    elderberry:elderberries
+
+    hamster:hamsters
+
+    earthworm:earthworms
+
+    accordionist:accordionists
+
+    bassoonist:bassoonists
+
+    French
+    hornist:French hornists
+
+    embezzler:embezzlers
+
+    badger:badgers
+
+    deviant:deviants
+
+    hop:hops
+
+    compost:root
+    vegetables
+
+    bug:bugs
+
+    pancake:pancakes
+
+    grave robber:grave robbers
+
+    eye:eyes
+
+    eyeball:eyeballs
+
+    dream:dreams
+
+    dragon:dragons
+
+    baka:bakas
+
+    impostor:impostors'
+  adjectives: 'pigeon-livered
+
+    decomposed
+
+    disregarded
+
+    towering
+
+    discounted
+
+    low-resolutioned
+
+    decaying
+
+    watered
+    down
+
+    milled-out
+
+    bug-eating
+
+    defrosted
+
+    unlicked
+
+    extinct
+
+    hovering
+
+    underclocked
+
+    standoffish
+
+    not
+    so Bright
+
+    frowned upon
+
+    grabby
+
+    absorbent
+
+    crabby
+
+    witless
+
+    ungifted
+
+    beat-down
+
+    sour
+
+    excessive
+
+    unwashed
+
+    flesh-eating
+
+    diluted
+
+    flat
+
+    not
+    peer-reviewed
+
+    fishy
+
+    fuzzy
+
+    rumbling
+
+    not dashing
+
+    mandatory
+
+    rumbutious
+
+    high-maintenance
+
+    single-celled
+
+    undigested
+
+    vitamin
+    deficient
+
+    hamsterless
+
+    thick
+
+    rhythmless
+
+    immoral
+
+    disappointing
+
+    zombieish
+
+    shabby
+
+    bloated
+
+    bottom-dwelling
+
+    gooey
+
+    greenish-yellow
+
+    rancid
+
+    slurred
+
+    deflated
+
+    drugged-up
+
+    half-cooked
+
+    blithering
+
+    warmed-up
+
+    wimpering
+
+    amateurish
+
+    airheaded
+
+    soggy
+
+    scratchy
+
+    clogged-up
+
+    abbreviated
+
+    pointless
+
+    nasal
+
+    methane-producing
+
+    stuffed
+    up
+
+    candyless
+
+    frogless
+
+    greyish
+
+    humid
+
+    damp
+
+    constipated
+
+    lagging
+
+    pasteurized
+
+    routine
+
+    rabid
+
+    hungover
+
+    suspicious
+
+    sussy
+
+    parched'
+  subjectives: 'you
+
+    your'
+  conjunctions: 'and
+
+    or'
+  templates: "SANVN\r\nSVNAN  \r\nSNVAN\r\nNVAAN\r\nNSNVA\r\nANSVA\r\nAANVN\r\nVANSN\r\nVNAAN\r\nVAANN\r\nVNSAN\r\nSVAVA\r\nSVNCV\r\nVSACA\r\nVANCV\r\nCAAAN\r\nANVAN\r\nCNVAN\r\nSANVA"
+  opponentPig: 'N:snoutband:snoutbands
+
+    N:sow:sows
+
+    N:oinker:oinkers
+
+    N:glutton:gluttons
+
+    N:warthog:warthogs
+
+    N:face-stuffer:face-stuffers
+
+    N:hogwash:hogworts
+
+    A:pink-faced
+
+    A:muddy
+
+    A:hog-nosed
+
+    A:porky
+
+    A:omnivorous
+
+    A:tasty
+
+    A:stout-bodied
+
+    V:squeals
+    like:squeal like
+
+    V:butchers:butcher
+
+    V:hogties:hogtie
+
+    V:sows:sow
+
+    V:oinks
+    like:oink like'
+  opponentHorse: 'A:bare-assed
+
+    A:buck-toothed
+
+    A:bucking
+
+    A:equine
+
+    A:half-assed
+
+    A:harness
+
+    A:neighing
+
+    A:pony-tailed
+
+    A:stubborn
+
+    N:ass-hat:asshats
+
+    N:haystack:haystacks
+
+    N:hippo:hippos
+
+    N:jackass:jackasses
+
+    N:mule:mules
+
+    V:bucks
+    up:buck up
+
+    V:goes haywire:go haywire
+
+    V:harness
+
+    V:passes the buck
+    to:pass the buck to
+
+    V:races ahead like:race ahead like'
+  responses: 'u knit badly
+
+    u ain''t funny
+
+    i dislike bunnies
+
+    no u
+
+    ur
+    mama
+
+    ur mom
+
+    ur mother
+
+    u mean hare
+
+    not nice
+
+    ur a hoser
+
+    leave'

@@ -2,7 +2,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
-using System.IO;
 using UnityEngine.UI;
 
 public class Opponent : MonoBehaviour
@@ -21,6 +20,8 @@ public class Opponent : MonoBehaviour
 
     private void Start()
 	{
+        ResponseList = ReadResponses();
+        ReadTriggers("pig");
         responseText.gameObject.SetActive(false);
         health = opponentsData[0].health;
         healthText.SetText(health.ToString());
@@ -35,11 +36,6 @@ public class Opponent : MonoBehaviour
         { WordType.Conjunction, new List<Word>() },
     };
 
-    public Opponent()
-    {
-        ResponseList = ReadResponses();
-        ReadTriggers("pig");
-    }
     // Reads trigger words of specific character
     void ReadTriggers(string character)
     {
@@ -54,8 +50,21 @@ public class Opponent : MonoBehaviour
         WordType wordType;
         List<WordType> removeList = new();
         string plural = "";
-        string path = Path.ChangeExtension(Path.Combine(Application.streamingAssetsPath, "TextData/Opponents", character), ".txt");
-        foreach (string line in File.ReadLines(path))
+        string textData;
+        switch (character)
+        {
+            case "pig":
+                textData = WordBank.instance.textData.opponentPig;
+                break;
+            case "donkey":
+                textData = WordBank.instance.textData.opponentHorse;
+                break;
+            default:
+                textData = null;
+                break;
+        }
+            
+        foreach (string line in textData.Split("\n"))
         {
             string[] data = line.Trim().Split(':');
             if (data[0].Length > 0)
@@ -190,7 +199,7 @@ public class Opponent : MonoBehaviour
     static List<string> ReadResponses()
     {
         List<string> responses = new();
-        foreach (string line in File.ReadLines(Path.Combine(Application.streamingAssetsPath, "TextData/Opponents/responses.txt")))
+        foreach (string line in WordBank.instance.textData.responses.Split("\n"))
         {
             string item = line.Trim();
             if (item.Length > 0)

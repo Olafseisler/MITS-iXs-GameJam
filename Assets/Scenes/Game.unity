@@ -989,7 +989,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 147.18153, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.8161583, w: -0.93233776}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1046,10 +1046,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1529108028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 113, y: 143.1}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 200, y: 33.2192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &467484184 stripped
 RectTransform:
@@ -1674,7 +1674,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4884371632425695981, guid: eb1e6b9cbcf36fb46ae3ea4ce9a4669f, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4884371632425695981, guid: eb1e6b9cbcf36fb46ae3ea4ce9a4669f, type: 3}
       propertyPath: m_fontSizeMax
@@ -2198,7 +2198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 119.649994, y: 220}
+  m_AnchoredPosition: {x: 180, y: 220}
   m_SizeDelta: {x: 239.29999, y: 333.4564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1013389233
@@ -3410,7 +3410,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -119.649994, y: 220}
+  m_AnchoredPosition: {x: -160, y: 220}
   m_SizeDelta: {x: 239.29999, y: 333.4564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529108029
@@ -3466,7 +3466,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4884371632425695981, guid: eb1e6b9cbcf36fb46ae3ea4ce9a4669f, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4884371632425695981, guid: eb1e6b9cbcf36fb46ae3ea4ce9a4669f, type: 3}
       propertyPath: m_fontSizeMax

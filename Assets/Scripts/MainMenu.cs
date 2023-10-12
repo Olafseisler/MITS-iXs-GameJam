@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject exitButton;
     private void Start()
     {
-        if (BuildConstants.isWebGL)
+        if (BuildConstants.isWebGL || BuildConstants.isMobile)
         {
             exitButton.SetActive(false);
         }

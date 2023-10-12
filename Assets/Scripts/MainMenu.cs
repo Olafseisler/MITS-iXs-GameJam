@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject exitButton;
+    private void Start()
+    {
+        if (BuildConstants.isWebGL)
+        {
+            exitButton.SetActive(false);
+        }
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Game");

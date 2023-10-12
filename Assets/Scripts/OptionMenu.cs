@@ -13,25 +13,41 @@ public class OptionMenu : MonoBehaviour
     public Toggle FullscreenToggle;
     public Toggle VSyncToggle;
     Resolution[] resolutions;
+    [SerializeField] GameObject resolutionOption;
 
     void Start()
     {
-        resolutions = Screen.resolutions;
-        List<string> options = new();
-        for (int i = 0; i < resolutions.Length; i++)
+        if (BuildConstants.isWebGL)
         {
-            string option = resolutions[i].width + " x " +
-                     resolutions[i].height;
-            options.Add(option);
+            resolutionOption.SetActive(false);
         }
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.RefreshShownValue();
+        else
+        {
+            resolutions = Screen.resolutions;
+            resolutionDropdown.ClearOptions();
+            List<string> options = new();
+            int currentResolutionIndex = 0;
+            for (int i = 0; i < resolutions.Length; i++)
+            {
+                string option = resolutions[i].width + "x" + resolutions[i].height + " @ " + Mathf.Round((float)resolutions[i].refreshRateRatio.value) + "hz";
+                options.Add(option);
+                if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+                {
+                    currentResolutionIndex = i;
+                }
+            }
+            resolutionDropdown.AddOptions(options);
+            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.RefreshShownValue();
+        }
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
-        Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
         QualitySettings.vSyncCount = PlayerPrefs.GetInt("VSyncPreference");
-        FullscreenToggle.SetIsOnWithoutNotify(Screen.fullScreen);
+        if (Screen.fullScreen)
+        {
+            FullscreenToggle.isOn = true;
+        }
         VSyncToggle.SetIsOnWithoutNotify(Convert.ToBoolean(PlayerPrefs.GetInt("vSyncPreference")));
 
     }
@@ -53,22 +69,15 @@ public class OptionMenu : MonoBehaviour
         }
     }
 
-    public void SetResolution()
+    public void SetResolution(int resolutionIndex)
     {
-        Debug.Log("Resolution set to index " + resolutionDropdown.value);
-        Resolution resolution = resolutions[resolutionDropdown.value];
-        Screen.SetResolution(resolution.width,
-                  resolution.height, Screen.fullScreen);
-        PlayerPrefs.SetInt("ResolutionPreference",
-               resolutionDropdown.value);
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetFullscreen()
+    public void SetFullscreen(bool isFullscreen)
     {
-        Screen.fullScreen = FullscreenToggle.isOn;
-        PlayerPrefs.SetInt("FullscreenPreference",
-           Convert.ToInt32(FullscreenToggle.isOn));
-        Debug.Log("Fullscreen toggled: " + FullscreenToggle.isOn);
+        Screen.fullScreen = isFullscreen;
     }
 
     public void SetvSync()

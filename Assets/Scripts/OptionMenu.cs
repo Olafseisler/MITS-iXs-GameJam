@@ -11,7 +11,6 @@ public class OptionMenu : MonoBehaviour
     public Slider effectsVolumeSlider;
     public TMPro.TMP_Dropdown resolutionDropdown;
     public Toggle FullscreenToggle;
-    public Toggle VSyncToggle;
     Resolution[] resolutions;
     [SerializeField] GameObject resolutionOption;
 
@@ -42,14 +41,7 @@ public class OptionMenu : MonoBehaviour
         }
         musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
-        resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
-        QualitySettings.vSyncCount = PlayerPrefs.GetInt("VSyncPreference");
-        if (Screen.fullScreen)
-        {
-            FullscreenToggle.isOn = true;
-        }
-        VSyncToggle.SetIsOnWithoutNotify(Convert.ToBoolean(PlayerPrefs.GetInt("vSyncPreference")));
-
+        FullscreenToggle.isOn = Screen.fullScreen;
     }
     public void updateMusicVolume()
     {
@@ -69,22 +61,14 @@ public class OptionMenu : MonoBehaviour
         }
     }
 
-    public void SetResolution(int resolutionIndex)
+    public void SetResolution()
     {
-        Resolution resolution = resolutions[resolutionIndex];
+        Resolution resolution = resolutions[resolutionDropdown.value];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetFullscreen(bool isFullscreen)
+    public void SetFullscreen()
     {
-        Screen.fullScreen = isFullscreen;
-    }
-
-    public void SetvSync()
-    {
-        QualitySettings.vSyncCount = Convert.ToInt32(VSyncToggle.isOn);
-        PlayerPrefs.SetInt("vSyncPreference",
-           QualitySettings.vSyncCount);
-        Debug.Log("VSync toggled: " + VSyncToggle.isOn);
+        Screen.fullScreen = Convert.ToBoolean(FullscreenToggle.isOn);
     }
 }

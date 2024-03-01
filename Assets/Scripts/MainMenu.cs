@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject exitButton;
+    private void Awake()
+    {
+        if (BuildConstants.isMobile) Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value; // fix mobile FPS
+    }
     private void Start()
     {
         if (BuildConstants.isWebGL || BuildConstants.isMobile)
